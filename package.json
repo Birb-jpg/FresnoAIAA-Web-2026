@@ -1,0 +1,13 @@
+{
+  "name": "aiaa-monorepo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:landing": "pnpm --filter landing dev",
+    "dev:wiki": "pnpm --filter wiki dev",
+    "build:landing": "pnpm --filter landing build",
+    "build:wiki": "pnpm --filter wiki build",
+    "build": "pnpm -r build"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
