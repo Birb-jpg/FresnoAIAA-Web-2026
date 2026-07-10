@@ -1,0 +1,32 @@
+@import "tailwindcss";
+:root{
+    box-sizing: border-box;
+    
+}
+
+@theme {
+  --color-brand-light: #ffff;
+  --color-brand: #ffff;
+  --color-brand-dark: #ffff;
+  
+  --color-background: #ffff;
+  --color-foreground: #ffff;
+}
+
+@layer base {
+  /* Apply them globally to the page */
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    @apply antialiased;
+  }
+
+  /* Set defaults for other global elements */
+  h1, h2, h3 {
+    @apply text-brand-dark font-bold;
+  }
+
+  a {
+    @apply text-brand hover:text-brand-dark transition-colors;
+  }
+}

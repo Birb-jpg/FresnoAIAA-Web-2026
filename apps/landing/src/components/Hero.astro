@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import FAR from '../assets/FAR0.webp';
+---
+<header class="size-dvh">
+    <h1 class="text-3xl font-bold">Building Rockets. Launching Dreams.</h1>
+    <h2 class="text-2xl">AIAA // Fresno</h2>   
+    <p class="text-lg">We are a student organization dedicated to promoting aerospace engineering and innovation.</p>
+    <div class="absolute inset-0 bg-linear-to-l from-slate-950 via-transparent to-slate-900/50"></div>
+
+    <Image 
+    src={FAR} 
+    alt="Website header background showcasing our creative workspace" 
+    class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-[-1]"
+    quality="high"
+    loading="eager"/>
+    
+</header>
