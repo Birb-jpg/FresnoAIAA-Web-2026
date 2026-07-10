@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <!-- PLACEHOLDER vehicle image — replace with a real photo of the rocket -->
+  <rect width="800" height="600" fill="#0d0d0d"/>
+  <g stroke="#242424" stroke-width="1">
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+  </g>
+  <!-- schematic rocket outline -->
+  <g stroke="#3a4a5e" stroke-width="2" fill="none">
+    <path d="M400 120 C 420 160, 424 200, 424 260 L 424 430 L 376 430 L 376 260 C 376 200, 380 160, 400 120 Z"/>
+    <path d="M376 380 L 336 470 L 376 450 Z"/>
+    <path d="M424 380 L 464 470 L 424 450 Z"/>
+    <line x1="376" y1="290" x2="424" y2="290"/>
+    <line x1="376" y1="410" x2="424" y2="410"/>
+  </g>
+  <text x="400" y="530" text-anchor="middle" font-family="monospace" font-size="18" fill="#3a4a5e" letter-spacing="4">PLACEHOLDER VEHICLE IMAGE</text>
+</svg>

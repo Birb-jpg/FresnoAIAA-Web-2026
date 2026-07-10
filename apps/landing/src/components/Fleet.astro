@@ -1,0 +1,72 @@
+---
+// Our Fleet — vehicle cards with large image + telemetry-style spec readout.
+// All vehicles/specs are PLACEHOLDER content.
+const vehicles = [
+	{
+		name: 'Placeholder Vehicle I',
+		role: 'PLACEHOLDER: competition vehicle',
+		image: '/vehicle-placeholder.svg',
+		stats: [
+			{ label: 'Apogee', value: '0,000 FT' },
+			{ label: 'Thrust', value: '0.0 kN' },
+			{ label: 'Diameter', value: '0.0 IN' },
+			{ label: 'Status', value: 'FLOWN' },
+		],
+	},
+	{
+		name: 'Placeholder Vehicle II',
+		role: 'PLACEHOLDER: research / test vehicle',
+		image: '/vehicle-placeholder.svg',
+		stats: [
+			{ label: 'Apogee', value: '0,000 FT' },
+			{ label: 'Thrust', value: '0.0 kN' },
+			{ label: 'Diameter', value: '0.0 IN' },
+			{ label: 'Status', value: 'IN BUILD' },
+		],
+	},
+];
+---
+
+<section id="fleet" class="bg-background py-24 md:py-32">
+	<div class="mx-auto max-w-7xl px-6 md:px-12">
+		<header data-reveal class="mb-14">
+			<p class="text-sm font-medium uppercase tracking-widest text-gray-500">02 / Our Fleet</p>
+			<h2 class="mt-3 max-w-2xl text-3xl font-extralight tracking-tight text-white md:text-4xl">
+				{/* PLACEHOLDER section lede */}
+				Designed, built, and flown by students.
+			</h2>
+		</header>
+
+		<div class="grid gap-6 md:grid-cols-2">
+			{
+				vehicles.map((vehicle) => (
+					<article
+						data-reveal
+						class="group border border-border bg-surface transition-colors duration-300 hover:border-accent/50"
+					>
+						<div class="aspect-[16/10] overflow-hidden border-b border-border">
+							<img
+								src={vehicle.image}
+								alt={`PLACEHOLDER image of ${vehicle.name}`}
+								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+								loading="lazy"
+							/>
+						</div>
+						<div class="p-6 md:p-8">
+							<h3 class="text-sm font-medium uppercase tracking-widest2 text-white">{vehicle.name}</h3>
+							<p class="mt-2 text-sm font-light text-gray-500">{vehicle.role}</p>
+							<dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-6 sm:grid-cols-4">
+								{vehicle.stats.map((stat) => (
+									<div>
+										<dt class="text-xs font-light uppercase tracking-widest text-gray-500">{stat.label}</dt>
+										<dd class="mt-1 font-mono text-sm text-accent">{stat.value}</dd>
+									</div>
+								))}
+							</dl>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

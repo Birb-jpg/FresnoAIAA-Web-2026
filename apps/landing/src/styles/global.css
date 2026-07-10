@@ -1,0 +1,45 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+/*
+ * Design tokens (Tailwind v4 CSS-first config — replaces tailwind.config.js).
+ * These generate utilities like bg-background, bg-surface, border-border,
+ * text-accent, hover:bg-accent-hover, tracking-widest2, font-sans.
+ */
+@theme {
+	--color-background: #050505;
+	--color-surface: #0d0d0d;
+	--color-surface-alt: #141414;
+	--color-border: #242424;
+	--color-accent: #0ea5ff;
+	--color-accent-hover: #3bb5ff;
+
+	--font-sans: 'Inter Variable', 'Roboto Flex', sans-serif;
+
+	--tracking-widest2: 0.25em;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/*
+ * Scroll-reveal (see the script in Layout.astro).
+ * .reveal-init is added by JS only — no-JS visitors and reduced-motion users
+ * never see hidden content.
+ */
+.reveal-init {
+	opacity: 0;
+	transform: translateY(1rem);
+	transition:
+		opacity 450ms ease-out,
+		transform 450ms ease-out;
+}
+.reveal-in {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+body {
+	@apply bg-background font-sans font-light text-white antialiased;
+}

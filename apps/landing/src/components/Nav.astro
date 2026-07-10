@@ -1,0 +1,127 @@
+---
+// Fixed site nav — transparent over the hero, gains a dark blurred backing on scroll.
+const links = [
+	{ href: '#projects', label: 'Projects' },
+	{ href: '#fleet', label: 'Fleet' },
+	{ href: '#join', label: 'Join Us' },
+];
+---
+
+<header id="site-nav" class="fixed inset-x-0 top-0 z-50 transition-colors duration-300">
+	<nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-12">
+		{/* PLACEHOLDER wordmark — swap for real club name / logo */}
+		<a href="/" class="text-sm font-medium uppercase tracking-widest2 text-white">
+			AIAA<span class="text-accent">&nbsp;//&nbsp;</span>Placeholder&nbsp;U
+		</a>
+
+		{/* Desktop links */}
+		<ul class="hidden items-center gap-10 md:flex">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class="group relative text-sm font-medium uppercase tracking-widest text-gray-300 transition-colors duration-300 hover:text-white"
+						>
+							{link.label}
+							<span class="absolute -bottom-1.5 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full"></span>
+						</a>
+					</li>
+				))
+			}
+			<li>
+				<a
+					href="#join"
+					class="rounded-sm border border-accent px-4 py-2 text-sm font-medium uppercase tracking-wide text-accent transition-colors duration-300 hover:bg-accent hover:text-black"
+				>
+					Get Involved
+				</a>
+			</li>
+		</ul>
+
+		{/* Mobile hamburger */}
+		<button
+			id="nav-toggle"
+			type="button"
+			class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+			aria-label="Toggle menu"
+			aria-expanded="false"
+			aria-controls="mobile-menu"
+		>
+			<span class="nav-bar h-px w-6 bg-white transition-all duration-300"></span>
+			<span class="nav-bar h-px w-6 bg-white transition-all duration-300"></span>
+			<span class="nav-bar h-px w-6 bg-white transition-all duration-300"></span>
+		</button>
+	</nav>
+
+	{/* Mobile menu — same dark/accent theme as desktop */}
+	<div id="mobile-menu" class="hidden border-t border-border bg-background/95 backdrop-blur-sm md:hidden">
+		<ul class="flex flex-col px-6 pb-6 pt-2">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class="block border-b border-border/60 py-4 text-sm font-medium uppercase tracking-widest text-gray-300 transition-colors duration-300 hover:text-accent"
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+			<li>
+				<a
+					href="#join"
+					class="mt-6 block rounded-sm border border-accent px-4 py-3 text-center text-sm font-medium uppercase tracking-wide text-accent transition-colors duration-300 hover:bg-accent hover:text-black"
+				>
+					Get Involved
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+<style>
+	/* Hamburger → X when open */
+	#nav-toggle[aria-expanded='true'] .nav-bar:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+	#nav-toggle[aria-expanded='true'] .nav-bar:nth-child(2) {
+		opacity: 0;
+	}
+	#nav-toggle[aria-expanded='true'] .nav-bar:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+</style>
+
+<script>
+	const nav = document.getElementById('site-nav');
+	const toggle = document.getElementById('nav-toggle');
+	const menu = document.getElementById('mobile-menu');
+
+	const SCROLLED_CLASSES = ['bg-background/90', 'backdrop-blur-sm', 'border-b', 'border-border'];
+
+	function updateBacking() {
+		const menuOpen = toggle?.getAttribute('aria-expanded') === 'true';
+		const solid = window.scrollY > 24 || menuOpen;
+		for (const cls of SCROLLED_CLASSES) nav?.classList.toggle(cls, solid);
+	}
+
+	function setMenu(open: boolean) {
+		toggle?.setAttribute('aria-expanded', String(open));
+		menu?.classList.toggle('hidden', !open);
+		updateBacking();
+	}
+
+	toggle?.addEventListener('click', () => {
+		setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+	});
+
+	// Close the mobile menu when a link inside it is followed
+	menu?.addEventListener('click', (e) => {
+		if ((e.target as HTMLElement).closest('a')) setMenu(false);
+	});
+
+	window.addEventListener('scroll', updateBacking, { passive: true });
+	updateBacking();
+</script>

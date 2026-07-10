@@ -1,0 +1,50 @@
+---
+// Current Projects — 3-up card grid. All entries are PLACEHOLDER content.
+const projects = [
+	{
+		status: 'ACTIVE',
+		name: 'Placeholder Project One',
+		blurb:
+			'Placeholder: a sentence or two describing the vehicle or research effort, its goals, and the competition or milestone it targets.',
+	},
+	{
+		status: 'IN DEVELOPMENT',
+		name: 'Placeholder Project Two',
+		blurb:
+			'Placeholder: a sentence or two describing the subsystem, payload, or experiment this team is building this year.',
+	},
+	{
+		status: 'RESEARCH',
+		name: 'Placeholder Project Three',
+		blurb:
+			'Placeholder: a sentence or two describing an early-stage study, propulsion test campaign, or design effort.',
+	},
+];
+---
+
+<section id="projects" class="bg-background py-24 md:py-32">
+	<div class="mx-auto max-w-7xl px-6 md:px-12">
+		<header data-reveal class="mb-14">
+			<p class="text-sm font-medium uppercase tracking-widest text-gray-500">01 / Current Projects</p>
+			<h2 class="mt-3 max-w-2xl text-3xl font-extralight tracking-tight text-white md:text-4xl">
+				{/* PLACEHOLDER section lede */}
+				What we're building right now.
+			</h2>
+		</header>
+
+		<div class="grid gap-6 md:grid-cols-3">
+			{
+				projects.map((project) => (
+					<article
+						data-reveal
+						class="border border-border bg-surface p-6 transition-colors duration-300 hover:border-accent/50"
+					>
+						<p class="font-mono text-xs tracking-widest text-accent">{project.status}</p>
+						<h3 class="mt-4 text-sm font-medium uppercase tracking-widest text-white">{project.name}</h3>
+						<p class="mt-4 text-base font-light leading-relaxed text-gray-400">{project.blurb}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
