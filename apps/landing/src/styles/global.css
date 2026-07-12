@@ -24,7 +24,11 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-family-sans);
+    scroll-behavior: smooth;
     @apply antialiased;
+  }
+  em {
+    font-style: normal;
   }
 
   /* Set defaults for other global elements */

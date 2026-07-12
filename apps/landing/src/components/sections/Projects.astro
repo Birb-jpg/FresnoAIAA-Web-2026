@@ -3,11 +3,17 @@ import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 ---
 
-<Section title="01 // CURRENT PROJECTS" subheading="What we're working on right now." className="max-w-full">
+<Section index="01" title="CURRENT PROJECTS" subheading="What we're working on right now." className="max-w-full" id="projects">
     <!-- cardgrid -->
    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card type="Active" title="Project One" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-        <Card type="Research" title="Project Two" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-        <Card type="In Development" title="Project Three" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        <Card type="Active" title="Project One" btnText="Learn More" href="#wikip1" variant="outline">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Card>
+        <Card type="Planning" title="Project One" btnText="Apply Now" href="#wikip1" variant="outline">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Card>
+        <Card type="Research" title="Project One" btnText="Learn More" href="#wikip1" variant="outline">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Card>
    </section>
 </Section>

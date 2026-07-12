@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
-import FAR from '../assets/FAR0.webp';
+import FAR from '../../assets/FAR0.webp';
 ---
 <header class="w-dvw h-dvh px-12">
 
@@ -19,12 +19,12 @@ import FAR from '../assets/FAR0.webp';
     <div class="absolute inset-x-0 bottom-0 h-78 pointer-events-none z-[-1] bg-linear-to-b from-transparent to-background"></div>
 
     <!-- <div class="absolute inset-0 w-full h-full pointer-events-none z-[-1] bg-radial-[at_70%_50%] from-alpha to-black/75 to-65%"></div> -->
-    <!-- <Image 
+    <Image 
     src={FAR} 
     alt="Website header background showcasing our creative workspace" 
     class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-[-3]"
     quality="high"
-    loading="eager"/> -->
+    loading="eager"/>
     <!-- <div class="absolute inset-0 w-full h-full pointer-events-none z-[-1] bg-linear-60 from-black/75 to-alpha"></div> -->
 
 </header>

@@ -2,13 +2,15 @@
 import type { HTMLAttributes } from "astro/types";
 import { twMerge } from "tailwind-merge";
 
-interface Props extends HTMLAttributes<"a">, HTMLAttributes<"button"> {
+export interface SharedProps {
     href?: string;
     variant?: "primary" | "secondary" | "outline" | "ghost";
     size?: "sm" | "md" | "lg";
     external?: boolean;
     className?: string;
 }
+
+export type Props = SharedProps & (HTMLAttributes<"button"> | HTMLAttributes<"a">);
 
 const {
     href,

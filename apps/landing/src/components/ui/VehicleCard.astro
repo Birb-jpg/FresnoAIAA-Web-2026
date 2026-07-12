@@ -20,7 +20,7 @@ const { image, alt, title, description, stats } = Astro.props;
 ---
 
 <section class="flex flex-col flex-1 border-2 border-brand/20 gap-2">
-  <Image src={image} alt={alt} class="w-full h-auto object-cover border-b-2 border-inherit" />
+  <Image src={image} alt={alt} class="w-auto h-full object-cover border-b-2 border-inherit" />
 
   <section class="flex flex-col p-6 gap-2">
     <h3 class="text-lg uppercase text-foreground font-bold tracking-widest">{title}</h3>

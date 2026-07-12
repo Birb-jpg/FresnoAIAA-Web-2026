@@ -1,20 +1,24 @@
 ---
 import { twMerge } from "tailwind-merge";
 interface Props {
-  title: string;
-  subheading?: string;
-  className?: string;
+    id?: string;
+    index?: string;
+    title: string;
+    subheading?: string;
+    className?: string;
 }
  
-const { title, subheading, className = ""} = Astro.props;
+const { id = "", index = "", title, subheading, className = ""} = Astro.props;
 const base = "flex flex-col gap-8 w-full";
 
 const classes = twMerge(base, className);
 
 ---
-<section class={classes}>
+<section class={classes} id={id}>
     <section>
-        <h3 class="text-sm uppercase font-light tracking-widest text-gray-500">
+        <h3 class="text-sm uppercase tracking-widest text-foreground/50 font-medium">
+            {index}
+            <em class="text-brand-light"> / </em>
             {title}
         </h3>
         {subheading && (

@@ -1,18 +1,20 @@
 ---
-interface Props {
+import Button from '../ui/Button.astro';
+import type { Props as ButtonProps } from './Button.astro';
+interface Props extends Pick<ButtonProps, 'href' | 'variant'> {
   type: string;
   title: string;
-  description: string;
+  btnText?: string;
 }
  
-const { type, title, description } = Astro.props;
+const { type, title, btnText, href, variant } = Astro.props;
 ---
  
 <section class="flex flex-col flex-1 border-2 border-brand gap-2">
   <section class="flex flex-col p-6 gap-1">
     <h2 class="text-sm uppercase text-brand-light tracking-widest font-normal">{type}</h2>
     <h3 class="text-lg uppercase text-foreground font-bold tracking-widest">{title}</h3>
-    <p class="text-base text-foreground/50">{description}</p>
+    <p class="text-base text-foreground/50"><slot /></p>
+    {btnText && href && <Button href={href} variant={variant}>{btnText}</Button>}
   </section>
 </section>
- 
