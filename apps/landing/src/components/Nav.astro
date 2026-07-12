@@ -1,0 +1,17 @@
+---
+import Button from './Button.astro';
+import {Image} from 'astro:assets';
+import Logo from '../assets/FAR0.webp';
+---
+
+
+<ul class="flex flex-row items-center">
+    <li><a href="/"><Image src={Logo} alt="AIAA // Fresno Logo" class="w-12 h-12 object-cover" /></a></li>
+    <li><Button href="#about" variant="ghost" size="md">About Us</Button></li>
+    <li><Button href="#fleet" variant="ghost" size="md">Our Fleet</Button></li>
+    <li><Button href="#wiki" variant="ghost" size="md">Wiki</Button></li>
+    <li><Button href="#contact" variant="ghost" size="md">Contact</Button></li>
+    <li><Button href="#projects" variant="ghost" size="md">Projects</Button></li>
+    <li><Button href="#sponsors" variant="ghost" size="md">Sponsors</Button></li>
+
+</ul>

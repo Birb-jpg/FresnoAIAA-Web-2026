@@ -1,0 +1,53 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { twMerge } from "tailwind-merge";
+
+interface Props extends HTMLAttributes<"a">, HTMLAttributes<"button"> {
+    href?: string;
+    variant?: "primary" | "secondary" | "outline" | "ghost";
+    size?: "sm" | "md" | "lg";
+    external?: boolean;
+    className?: string;
+}
+
+const {
+    href,
+    variant = "primary",
+    size = "md",
+    external = false,
+    className = "",
+    ...rest
+} = Astro.props;
+
+const base =
+    "inline-flex items-center justify-center gap-2 uppercase tracking-wide font-medium " +
+    "transition-colors duration-150 focus-visible:outline-none " +
+    "focus-visible:ring-1 focus-visible:ring-(--color-brand-light) focus-visible:ring-offset-2 " +
+    "focus-visible:ring-offset-(--color-background) disabled:opacity-40 disabled:pointer-events-none";
+
+const variants = {
+    primary:
+        "bg-(--color-brand) text-white border border-(--color-brand) hover:bg-(--color-brand-dark) hover:border-(--color-brand-dark)",
+    secondary:
+        "bg-transparent text-(--color-foreground) border border-(--color-foreground)/20 hover:border-(--color-brand-light) hover:text-(--color-brand-light)",
+    outline:
+        "bg-transparent text-(--color-foreground) border border-slate-800 hover:border-slate-600 hover:text-white",
+    ghost:
+        "bg-transparent text-(--color-foreground)/80 border border-transparent hover:text-(--color-brand-light)",
+};
+
+const sizes = {
+    sm: "px-4 py-1 text-xs",
+    md: "px-5 py-1.5 text-sm",
+    lg: "px-6 py-2 text-base",
+};
+
+const classes = twMerge(base, variants[variant], sizes[size], className);
+
+const Tag = href ? "a" : "button";
+const externalAttrs = external && href ? { target: "_blank", rel: "noopener noreferrer" } : {};
+---
+
+<Tag href={href} class={classes} {...externalAttrs} {...rest}>
+    <slot />
+</Tag>

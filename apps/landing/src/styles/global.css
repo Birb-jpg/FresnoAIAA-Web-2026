@@ -1,16 +1,21 @@
 @import "tailwindcss";
+@import '@fontsource-variable/urbanist/wght.css';
+
 :root{
     box-sizing: border-box;
     
 }
 
 @theme {
-  --color-brand-light: #ffff;
-  --color-brand: #ffff;
-  --color-brand-dark: #ffff;
-  
-  --color-background: #ffff;
-  --color-foreground: #ffff;
+/* Core Brand Colors (Deep space to electric aerospace accents) */
+  --color-brand-light: #38BDF8; /* Electric Cyan: sharp highlight for active states & subtle accents */
+  --color-brand:       #0284C7; /* Core Blue: primary buttons, links, and key focus elements */
+  --color-brand-dark:  #0369A1; /* Deep Oceanic: hover states & active borders */
+
+  /* Surface & Text Colors (Sleek dark mode hierarchy) */
+  --color-background:  #0B0F19; /* Cosmic Obsidian: deep, ultra-dark navy background */
+  --color-foreground:  #F8FAFC; /* Starlight White: crisp, high-contrast primary text */
+  --font-family-sans: 'Urbanist', sans-serif;
 }
 
 @layer base {
@@ -18,6 +23,7 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-family-sans);
     @apply antialiased;
   }
 
