@@ -24,7 +24,6 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-family-sans);
-    scroll-behavior: smooth;
     @apply antialiased;
   }
   em {
@@ -38,5 +37,31 @@
 
   a {
     @apply text-brand hover:text-brand-dark transition-colors;
+  }
+}
+@layer components {
+  .underline-hover {
+    @apply relative inline-block w-fit after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 after:ease-out;
+  }
+  .underline-hover:hover::after {
+    @apply scale-x-100;
+  }
+
+  [data-fadein] {
+    @apply opacity-0 transition-all duration-700 ease-out;
+    transform: translateY(1.5rem);
+    transition-delay: var(--fadein-delay, 0ms);
+  }
+
+  [data-fadein="left"]  { transform: translateX(-1.5rem); }
+  [data-fadein="right"] { transform: translateX(1.5rem); }
+  [data-fadein="up"] { transform: translateY(-1.5rem); }
+  [data-fadein="down"] { transform: translateY(1.5rem); }
+
+  [data-fadein="none"]  { transform: none; }
+
+  [data-fadein].is-visible {
+    @apply opacity-100;
+    transform: translate(0, 0);
   }
 }

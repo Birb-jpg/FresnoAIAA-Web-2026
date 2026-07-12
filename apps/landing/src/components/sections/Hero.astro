@@ -5,12 +5,14 @@ import FAR from '../../assets/FAR0.webp';
 ---
 <header class="w-dvw h-dvh px-12">
 
-    <section class="flex flex-col max-w-1/3 h-full items-center">
+    <section data-fadein="left" data-fadein-delay="200" class="flex flex-col max-w-1/3 h-full items-center">
         <section class="flex flex-col h-full items-start justify-center gap-6">
-            <h2 class="text-lg uppercase font-normal tracking-widest">AIAA Student Chapter at Fresno State</h2>   
-            <h1 class="text-7xl font-light tracking-normal uppercase">Building Rockets. <strong class="font-extrabold text-brand-light">Launching Dreams.</strong></h1>
-            <p class="text-base max-w-lg text-gray-400">We are a student organization dedicated to promoting aerospace engineering and innovation.</p>
-            <Button href="#about" variant="primary" size="lg">Learn More</Button>
+            <h2 class="text-lg uppercase font-normal tracking-widest" data-fadein="up" data-fadein-delay="1000">AIAA Student Chapter at Fresno State</h2>   
+            <h1 class="text-7xl font-light tracking-normal uppercase">Building Rockets. <strong data-fadein="none" data-fadein-delay="700" class="font-extrabold text-brand-light">Launching Dreams.</strong></h1>
+            <p class="text-base max-w-lg text-gray-400"  data-fadein="down" data-fadein-delay="1500">We are a student organization dedicated to promoting aerospace engineering and innovation.</p>
+            <span data-fadein="down" data-fadein-delay="1500">
+                <Button href="#about" variant="primary" size="lg">Learn More</Button>
+            </span>
 
         </section>
     </section>
@@ -20,6 +22,8 @@ import FAR from '../../assets/FAR0.webp';
 
     <!-- <div class="absolute inset-0 w-full h-full pointer-events-none z-[-1] bg-radial-[at_70%_50%] from-alpha to-black/75 to-65%"></div> -->
     <Image 
+    data-fadein="none"
+    data-fadein-delay="2000"
     src={FAR} 
     alt="Website header background showcasing our creative workspace" 
     class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-[-3]"
