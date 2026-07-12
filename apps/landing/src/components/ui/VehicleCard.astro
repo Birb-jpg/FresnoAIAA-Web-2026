@@ -1,0 +1,36 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Stat from './Stat.astro';
+
+interface StatItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  title: string;
+  description: string;
+  stats: StatItem[];
+}
+
+const { image, alt, title, description, stats } = Astro.props;
+---
+
+<section class="flex flex-col flex-1 border-2 border-brand/20 gap-2">
+  <Image src={image} alt={alt} class="w-full h-auto object-cover border-b-2 border-inherit" />
+
+  <section class="flex flex-col p-6 gap-2">
+    <h3 class="text-lg uppercase text-foreground font-bold tracking-widest">{title}</h3>
+    <p class="text-sm text-foreground/50">{description}</p>
+    <hr class="text-foreground/20 my-2" />
+    <section class="flex flex-row justify-between gap-2">
+        {stats.map((stat) => (
+        <Stat label={stat.label} value={stat.value} />
+        ))}
+  </section>
+  </section>
+  
+</section>

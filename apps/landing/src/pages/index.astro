@@ -1,15 +1,18 @@
 ---
-// 1. Import your layout and components in the frontmatter
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import Fleet from '../components/Fleet.astro';
+import Nav from '../components/layout/Nav.astro';
+import Hero from '../components/sections/Hero.astro';
+import Projects from '../components/sections/Projects.astro';
+import Fleet from '../components/sections/Fleet.astro';
 ---
 
-<Layout title="AIAA // Fresno">
+<Layout title="Home - AIAA // Fresno">
   <Nav />
-  <main>
-    <Hero />
-    <Fleet />
+  <Hero />
+  <main class="flex flex-col h-[1000vh] w-full items-center">
+    <article class="flex flex-col gap-48 max-w-7xl">
+      <Projects />
+      <Fleet />
+    </article>
   </main>
 </Layout>

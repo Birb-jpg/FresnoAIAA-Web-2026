@@ -1,0 +1,31 @@
+---
+import Section from '../ui/Section.astro';
+import VehicleCard from '../ui/VehicleCard.astro';
+import { Image } from 'astro:assets';
+import VehicleOneImage from '../../assets/FAR0.webp';
+---
+
+<Section title="02 // OUR FLEET" subheading="Designed, built, and flown by students." className="max-w-full">
+     <!-- cardgrid -->
+     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <VehicleCard image={VehicleOneImage} alt="Vehicle One" title="Vehicle I" description="Description for VEHICLE I" stats={[
+               { label: 'Apogee', value: '0,000 FT' },
+               { label: 'Motor', value: 'J800T' },
+               { label: 'Thrust', value: '0.0 kN' },
+               { label: 'Diameter', value: '0.0 IN' },
+               { label: 'Length', value: '0.0 IN' },
+               { label: 'Status', value: 'FLOWN' }
+
+          ]} />
+          <VehicleCard image={VehicleOneImage} alt="Vehicle One" title="Vehicle II" description="Description for VEHICLE II" stats={[
+               { label: 'Apogee', value: '0,000 FT' },
+               { label: 'Motor', value: 'J800T' },
+               { label: 'Thrust', value: '0.0 kN' },
+               { label: 'Diameter', value: '0.0 IN' },
+               { label: 'Length', value: '0.0 IN' },
+               { label: 'Status', value: 'IN PROGRESS' }
+          ]} />
+          
+     
+     </section>
+</Section>

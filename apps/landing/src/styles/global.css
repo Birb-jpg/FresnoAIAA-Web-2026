@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import '@fontsource-variable/urbanist/wght.css';
+@import '@fontsource-variable/raleway/wght.css';
 
 :root{
     box-sizing: border-box;
@@ -15,7 +15,7 @@
   /* Surface & Text Colors (Sleek dark mode hierarchy) */
   --color-background:  #0B0F19; /* Cosmic Obsidian: deep, ultra-dark navy background */
   --color-foreground:  #F8FAFC; /* Starlight White: crisp, high-contrast primary text */
-  --font-family-sans: 'Urbanist', sans-serif;
+  --font-family-sans: 'Raleway Variable', sans-serif;
 }
 
 @layer base {
