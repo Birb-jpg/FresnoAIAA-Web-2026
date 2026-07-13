@@ -1,9 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Nav from '../components/layout/Nav.astro';
+import Nav from '../components/ui/Nav.astro';
 import Hero from '../components/sections/Hero.astro';
 import Projects from '../components/sections/Projects.astro';
 import Fleet from '../components/sections/Fleet.astro';
+import About from '../components/sections/About.astro';
+import Wiki from  '../components/sections/Wiki.astro'
+import Contact from  '../components/sections/Contact.astro'
+
 ---
 
 <Layout title="Home - AIAA // Fresno">
@@ -13,6 +17,9 @@ import Fleet from '../components/sections/Fleet.astro';
     <article class="flex flex-col gap-48 max-w-7xl">
       <Projects />
       <Fleet />
+      <About />
+      <Wiki />
+      <Contact />
     </article>
   </main>
 </Layout>

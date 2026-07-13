@@ -9,7 +9,7 @@ interface Props {
 }
  
 const { id = "", index = "", title, subheading, className = ""} = Astro.props;
-const base = "flex flex-col gap-8 w-full";
+const base = "flex flex-col gap-8 w-full scroll-mt-24";
 
 const classes = twMerge(base, className);
 

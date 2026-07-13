@@ -4,15 +4,15 @@ import {Image} from 'astro:assets';
 import Logo from '../assets/FAR0.webp';
 ---
 
-<section data-fadein="up" data-fadein-delay="1750" class="w-full flex flex-row justify-around items-center py-4 fixed z-2">
+<section data-fadein="up" data-fadein-delay="200" class="w-full flex flex-row justify-around items-center py-4 fixed z-2">
     <!-- <a href="/"><Image src={Logo} alt="AIAA // Fresno Logo" class="w-12 h-12 object-cover" /></a> -->
-    <a href="/" class="text-md font-normal uppercase text-center tracking-widest text-white">AIAA <span class="text-brand-light">//</span> Fresno State</a>
+    <a href="#" class="text-md font-normal uppercase text-center tracking-widest text-white">AIAA <span class="text-brand-light">//</span> Fresno State</a>
     <ul class="flex flex-row items-center">
-        <li><Button href="#about" variant="ghost" size="md">About Us</Button></li>
+        <li><Button href="#projects" variant="ghost" size="md">Projects</Button></li>
         <li><Button href="#fleet" variant="ghost" size="md">Fleet</Button></li>
+        <li><Button href="#about" variant="ghost" size="md">About Us</Button></li>
         <li><Button href="#wiki" variant="ghost" size="md">Wiki</Button></li>
         <li><Button href="#contact" variant="ghost" size="md">Contact</Button></li>
-        <li><Button href="#projects" variant="ghost" size="md">Projects</Button></li>
         <li><Button href="#sponsors" variant="outline" className="border-brand-light" size="md">Sponsors</Button></li>
 
     </ul>
