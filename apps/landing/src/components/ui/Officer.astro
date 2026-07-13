@@ -1,0 +1,27 @@
+---
+import { twMerge } from "tailwind-merge";
+
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+interface Props {
+  position: string;
+  name: string;
+  bio: string;
+  image: ImageMetadata;
+  className?: string;
+};
+ 
+const { position, name, bio, image, className = ""} = Astro.props;
+const base = "flex flex-col border border-brand/20 gap-2 hover:border-brand transition-all duration-300"
+const classes = twMerge(base, className);
+
+---
+
+<section class={classes}>
+    <Image src={image} alt="alt" class="w-full h-auto aspect-square object-cover" />
+    <section class="flex flex-col p-6 gap-1">
+        <h2 class="text-sm uppercase text-brand-light tracking-widest font-normal">{position}</h2>
+        <h3 class="text-lg uppercase text-foreground font-bold tracking-widest">{name}</h3>
+        <p class="text-base text-foreground/50">{bio}</p>
+    </section>
+</section>

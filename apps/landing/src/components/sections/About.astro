@@ -1,10 +1,87 @@
 ---
+// OfficersSection.astro
 import Section from '../ui/Section.astro';
-import { Image } from 'astro:assets';
-import FAR from '../../assets/FAR0.webp';
+import Officer from '../ui/Officer.astro';
+import Card from '../ui/Card.astro';
+import {Image} from 'astro:assets';
+const officerImages = import.meta.glob('../../assets/officers/*.{webp,png,jpg,jpeg}', { eager: true }) as Record<string, { default: string }>;
+
+const officerInfo = {
+  "President": {
+    name: 'Jane Doe',
+    bio: 'Woosh x1',
+    imageFile: 'FAR0.webp', // just the filename in the officers folder
+  },
+  "Vice President": {
+    name: 'John Smith',
+    bio: 'Woosh x2',
+    imageFile: 'FAR0.webp',
+  },
+  "Treasurer": {
+    name: 'John Smith',
+    bio: 'Woosh x3',
+    imageFile: 'FAR0.webp',
+  },
+  "Secretary": {
+    name: 'John Smith',
+    bio: 'Woosh x4',
+    imageFile: 'FAR0.webp',
+  },
+  "Event Coordinator": {
+    name: 'John Smith',
+    bio: 'Woosh x5',
+    imageFile: 'FAR0.webp',
+  },
+  "K-12 Outreach Coordinator": {
+    name: 'John Smith',
+    bio: 'Woosh x6',
+    imageFile: 'FAR0.webp',
+  },
+  "Media Coordinator": {
+    name: 'John Smith',
+    bio: 'Woosh x7',
+    imageFile: 'FAR0.webp',
+  },
+};
+
+function getImage(filename: string) {
+  const entry = Object.entries(officerImages).find(([path]) => path.endsWith(filename));
+  if (!entry) throw new Error(`Officer image not found: ${filename}`);
+  return entry[1].default;
+}
 ---
 
-
 <Section index="03" title="ABOUT US" subheading="Who are we again?" className="max-w-full" id="about">
+  <section class="flex flex-row flex-wrap justify-center gap-6 max-w-full">
+    {Object.entries(officerInfo).map(([position, info]) => (
+      <Card type={position} title={info.name} image={getImage(info.imageFile)} className="sm:w-[calc(50%-0.75rem)] md:w-[calc(25%-1.125rem)]">
+        {info.bio}
+      </Card>
+    ))}
+  </section>
+    <section class="flex flex-col gap-6">
+        <hr>
+        <h4 class="text-3xl font-normal text-foreground">What do we do?</h4>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+                Gain Tripoli rocketry certifications supported by workshops
+            </Card>
+            <Card type="Student Development" title="Workshops" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+                Students can work on their rocket kits and be advised by peers
+            </Card>
+             <Card type="Volunteering" title="K-12 Outreach" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+                2000+ people impacted, stats etc etc etc
+            </Card>
+             <Card type="Research" title="Prop" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Card>
+            <Card type="Research" title="Abks" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Card>
+            <Card type="Competition" title="NASA USLI" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Card>
+        </section>
 
+    </section>
 </Section>
