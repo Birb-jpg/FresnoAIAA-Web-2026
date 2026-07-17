@@ -14,6 +14,10 @@ import "../styles/global.css";
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<!-- Hide fade-in elements before first paint so refreshes don't flash the final text.
+		     Inline (part of the HTML document) so it applies pre-paint, unlike the bundled stylesheet. -->
+		<script is:inline>document.documentElement.classList.add('js');</script>
+		<style is:inline>html.js [data-fadein]:not(.is-visible){opacity:0}</style>
 	</head>
 	<body>
 		<slot />
