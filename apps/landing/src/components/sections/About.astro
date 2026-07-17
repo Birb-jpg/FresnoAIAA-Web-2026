@@ -51,18 +51,10 @@ function getImage(filename: string) {
 }
 ---
 
-<Section index="03" title="ABOUT US" subheading="Who are we again?" className="max-w-full" id="about">
+<Section index="03" title="ABOUT US" subheading="What do we do again?" className="max-w-full" id="about">
   
-  <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
-    {Object.entries(officerInfo).map(([position, info]) => (
-      <Card ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
-        {info.bio}
-      </Card>
-    ))}
-  </section>
-    <section class="flex flex-col gap-6">
-        <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
-        <h4 class="text-3xl font-normal text-foreground">What do we do?</h4>
+
+    <section data-fadein="up" class="flex flex-col gap-6">
         <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card ticks={false} type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
                 Gain Tripoli rocketry certifications supported by workshops
@@ -85,4 +77,17 @@ function getImage(filename: string) {
         </section>
 
     </section>
+
+    <section data-fadein="up" class="flex flex-col gap-6">
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
+      <h4 class="text-3xl font-normal text-foreground">Our Officers.</h4>
+    <section data-fadein="up" class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    {Object.entries(officerInfo).map(([position, info]) => (
+      <Card ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
+        {info.bio}
+      </Card>
+    ))}
+  </section>
+  </section>
+
 </Section>
