@@ -1,5 +1,8 @@
 @import "tailwindcss";
+@import '@fontsource-variable/inter/wght.css';
 @import '@fontsource-variable/raleway/wght.css';
+
+@import '@fontsource/ibm-plex-mono';
 
 :root{
     box-sizing: border-box;
@@ -15,7 +18,9 @@
   /* Surface & Text Colors (Sleek dark mode hierarchy) */
   --color-background:  #0B0F19; /* Cosmic Obsidian: deep, ultra-dark navy background */
   --color-foreground:  #F8FAFC; /* Starlight White: crisp, high-contrast primary text */
-  --font-family-sans: 'Raleway Variable', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'Raleway Variable', sans-serif;
+
 }
 
 @layer base {
@@ -23,7 +28,7 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-family-sans);
+    font-family: var(--font-sans);
     @apply antialiased;
   }
   em {
@@ -31,9 +36,10 @@
   }
 
   /* Set defaults for other global elements */
-  h1, h2, h3 {
-    @apply text-brand-dark font-bold;
+  h1, h2, h3, h4 {
+    @apply text-brand-dark font-bold font-sans;
   }
+
 
   a {
     @apply text-brand hover:text-brand-dark transition-colors;

@@ -1,25 +1,32 @@
 ---
 import { twMerge } from "tailwind-merge";
-import type { ImageMetadata } from 'astro';
+import { Icon } from 'astro-icon/components';
 import Button from '../ui/Button.astro';
-import { Image } from 'astro:assets';
 import type { Props as ButtonProps } from './Button.astro';
-interface Props extends Pick<ButtonProps, 'href' | 'variant'> {
+
+interface Props extends Partial<Pick<ButtonProps, 'href' | 'variant'>> {
   type: string;
   title: string;
-  btnText?: string;
-  image?: ImageMetadata;
-  alt?: string;
-  className?: string;
+  icon: string;
+  href: string;
   ticks?: boolean;
+  className?: string;
 }
 
-const { type, title, btnText, href, variant, image, alt = "noalt", className = "", ticks = true } = Astro.props;
+const {
+  type,
+  title,
+  icon,
+  href,
+  variant,
+  ticks = true,
+  className = "",
+} = Astro.props;
+
 const base = "group relative flex flex-col border border-brand/20 gap-2 hover:border-brand transition-all duration-300 rounded-md";
-const classes = twMerge(base, className)
+const classes = twMerge(base, className);
 ---
-<section class={classes}>
-  
+<a {href} target="_blank" rel="noopener noreferrer" class={classes}>
   {ticks && (
     <>
       <span aria-hidden="true" class="pointer-events-none absolute top-1.5 left-1.5 w-2.5 h-2.5 border-t border-l border-brand/40 group-hover:border-brand/80 transition-colors duration-300"></span>
@@ -28,13 +35,15 @@ const classes = twMerge(base, className)
       <span aria-hidden="true" class="pointer-events-none absolute bottom-1.5 right-1.5 w-2.5 h-2.5 border-b border-r border-brand/40 group-hover:border-brand/80 transition-colors duration-300"></span>
     </>
   )}
-  {image && <Image src={image} alt={alt} />}
   <section class="flex flex-col p-6 gap-1 flex-1">
-    <h2 class="text-xs uppercase text-brand-light font-normal tracking-tight">{type}</h2>
-    <h3 class="text-lg text-foreground font-bold">{title}</h3>
-    <p class="text-sm text-foreground/50"><slot /></p>
-    <section class="w-full h-auto flex flex-col mt-auto">
-      {btnText && href && <Button href={href} variant={variant}>{btnText}</Button>}
+    <h2 class="font-mono text-xs uppercase text-brand-light font-normal tracking-tight">{type}</h2>
+    <section class="flex items-center gap-3 mt-1">
+      <Icon
+        name={icon}
+        class="text-foreground/70 group-hover:text-brand transition-colors duration-300 shrink-0 w-8 h-auto"
+      />
+      <h3 class="font-sans text-lg text-foreground font-bold">{title}</h3>
     </section>
+    <p class="font-sans text-sm text-foreground/50"><slot /></p>
   </section>
-</section>
+</a>

@@ -16,13 +16,13 @@ const classes = twMerge(base, className);
 ---
 <section class={classes} id={id}>
     <section>
-        <h3 class="text-sm uppercase tracking-widest text-foreground/50 font-medium">
+        <h3 class="text-xs uppercase tracking-tight font-mono text-foreground/50 font-thin">
             {index}
             <span class="text-brand-light font-bold"> / </span>
             {title}
         </h3>
         {subheading && (
-            <h4 class="text-3xl font-normal text-foreground">{subheading}</h4>
+            <h4 class="text-3xl font-sans font-normal text-foreground tracking-tight">{subheading}</h4>
         )}
     </section>
     <slot />

@@ -1,8 +1,24 @@
 ---
+import SocialCard from '../ui/SocialCard.astro'
 import Section from '../ui/Section.astro';
+const socials = [
+    {type: "EMAIL", title: 'Email Us', url: 'mailto:aiaafresno@gmail.com', icon: 'mdi:email', text:"aiaafresno@gmail.com"},
+    {type: "LINKEDIN", title: 'Connect With Us on LinkedIn', url: 'https://www.linkedin.com/in/aiaa-fresno-state-041054393/', icon: 'simple-icons:linkedin' , text:"Updates and Professional Development"},
+    {type: "INSTAGRAM", title: 'Follow Our Instagram', url: 'https://www.instagram.com/aiaacsufresno', icon: 'simple-icons:instagram', text:"@aiaacsufresno"},
+    {type: "DISCORD", title: 'Join Our Server', url: 'https://discord.com/invite/m42P8yjjJ9', icon: 'simple-icons:discord', text:"Our main communication hub." },
+    {type: "LINKTREE", title: 'All of Our Links', url: 'https://linktr.ee/csufresnoaiaa', icon: 'simple-icons:linktree', text:"All of our links!"},
+];
 ---
 
 
 <Section index="05" title="CONTACT US" subheading="Stay connected!" className="max-w-full" id="contact">
+    <section class="grid grid-cols-6 gap-4 [&>*:nth-child(-n+2)]:col-span-3 *:col-span-2">
+        
 
+        {socials.map(s => (
+            <SocialCard type={s.type} title={s.title} icon={s.icon} href={s.url}>
+                {s.text}
+            </SocialCard>
+        ))}
+    </section>
 </Section>

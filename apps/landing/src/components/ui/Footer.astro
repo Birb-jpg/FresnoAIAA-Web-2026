@@ -1,0 +1,122 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const year = new Date().getFullYear();
+
+const nav = [
+  { label: 'Projects', href: '#projects' },
+  { label: 'Fleet', href: '#fleet' },
+  { label: 'About Us', href: '#about' },
+  { label: 'Wiki', href: '#wiki' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Sponsors', href: '#sponsors' },
+];
+
+const socials = [
+  { label: 'Email', href: 'mailto:club@fresnoaiaa.org', icon: 'mdi:email' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/company/yourclub', icon: 'simple-icons:linkedin' },
+  { label: 'Instagram', href: 'https://instagram.com/yourclub', icon: 'simple-icons:instagram' },
+  { label: 'Discord', href: 'https://discord.gg/yourclub', icon: 'simple-icons:discord' },
+  { label: 'Linktree', href: 'https://linktr.ee/yourclub', icon: 'simple-icons:linktree' },
+];
+---
+
+<footer class="relative w-full overflow-hidden border-t border-brand/15 bg-background mt-20">
+  <!-- Ambient accent glow -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-40 left-1/2 h-80 w-[80%] -translate-x-1/2 rounded-full bg-brand/10 blur-3xl"
+  >
+  </div>
+  <!-- Top hairline gradient -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-light/60 to-transparent"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-5xl px-6 py-16">
+    <div class="flex flex-col gap-12 md:flex-row md:justify-between">
+      <!-- Brand -->
+      <div data-fadein="up" class="max-w-sm">
+        <a
+          href="#"
+          class="text-lg font-normal uppercase tracking-widest text-white transition-colors hover:text-brand-light"
+        >
+          AIAA <span class="font-bold text-brand-light">//</span> Fresno State
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-foreground/50">
+          The American Institute of Aeronautics and Astronautics at Fresno State —
+          designing, building, and flying the next generation of aerospace vehicles.
+        </p>
+        <div class="mt-6 flex items-center gap-3">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                class="group relative grid h-10 w-10 place-items-center rounded-md border border-brand/20 text-foreground/60 transition-all duration-300 hover:border-brand hover:text-brand-light hover:-translate-y-0.5"
+              >
+                <Icon name={s.icon} class="h-4 w-auto" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Nav columns -->
+      <div class="grid grid-cols-2 gap-10 sm:gap-16" data-fadein="up" data-fadein-delay="100">
+        <div>
+          <h3 class="font-mono text-xs uppercase tracking-tight text-brand-light">Explore</h3>
+          <ul class="mt-4 flex flex-col gap-3">
+            {
+              nav.map((n) => (
+                <li>
+                  <a href={n.href} class="underline-hover text-sm text-foreground/70 hover:text-foreground">
+                    {n.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <!-- <div>
+          <h3 class="font-mono text-xs uppercase tracking-tight text-brand-light">Connect</h3>
+          <ul class="mt-4 flex flex-col gap-3">
+            {
+              socials.map((s) => (
+                <li>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline-hover inline-flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground"
+                  >
+                    <Icon name={s.icon} class="h-3.5 w-auto text-foreground/40" />
+                    {s.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-14 h-px w-full bg-gradient-to-r from-transparent via-brand/20 to-transparent"></div>
+
+    <!-- Bottom bar -->
+    <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+      <p class="font-mono text-xs text-foreground/40">
+        &copy; {year} AIAA Fresno State. All rights reserved.
+      </p>
+      <p class="flex items-center gap-2 font-mono text-xs text-foreground/40">
+        <span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-brand-light"></span>
+        Systems nominal — Fresno, CA
+      </p>  
+    </div>
+  </div>
+</footer>

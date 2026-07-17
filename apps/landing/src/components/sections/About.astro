@@ -32,7 +32,7 @@ const officerInfo = {
     bio: 'Woosh x5',
     imageFile: 'FAR0.webp',
   },
-  "K-12 Outreach Coordinator": {
+  "K-12 Coordinator": {
     name: 'John Smith',
     bio: 'Woosh x6',
     imageFile: 'FAR0.webp',
@@ -52,33 +52,34 @@ function getImage(filename: string) {
 ---
 
 <Section index="03" title="ABOUT US" subheading="Who are we again?" className="max-w-full" id="about">
-  <section class="flex flex-row flex-wrap justify-center gap-6 max-w-full">
+  
+  <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
     {Object.entries(officerInfo).map(([position, info]) => (
-      <Card type={position} title={info.name} image={getImage(info.imageFile)} className="sm:w-[calc(50%-0.75rem)] md:w-[calc(25%-1.125rem)]">
+      <Card ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
         {info.bio}
       </Card>
     ))}
   </section>
     <section class="flex flex-col gap-6">
-        <hr>
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
         <h4 class="text-3xl font-normal text-foreground">What do we do?</h4>
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card ticks={false} type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
                 Gain Tripoli rocketry certifications supported by workshops
             </Card>
-            <Card type="Student Development" title="Workshops" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+            <Card ticks={false} type="Student Development" title="Workshops" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
                 Students can work on their rocket kits and be advised by peers
             </Card>
-             <Card type="Volunteering" title="K-12 Outreach" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+             <Card ticks={false} type="Volunteering" title="K-12 Outreach" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
                 2000+ people impacted, stats etc etc etc
             </Card>
-             <Card type="Research" title="Prop" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+             <Card ticks={false} type="Research" title="Prop" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Card>
-            <Card type="Research" title="Abks" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+            <Card ticks={false} type="Research" title="Abks" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Card>
-            <Card type="Competition" title="NASA USLI" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+            <Card ticks={false} type="Competition" title="NASA USLI" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Card>
         </section>
