@@ -1,10 +1,8 @@
 ---
 // OfficersSection.astro
 import Section from '../ui/Section.astro';
-import Officer from '../ui/Officer.astro';
 import Card from '../ui/Card.astro';
-import {Image} from 'astro:assets';
-const officerImages = import.meta.glob('../../assets/officers/*.{webp,png,jpg,jpeg}', { eager: true }) as Record<string, { default: string }>;
+const officerImages = import.meta.glob('../../assets/*/*.{webp,png,jpg,jpeg}', { eager: true }) as Record<string, { default: string }>;
 
 const officerInfo = {
   "President": {
@@ -55,25 +53,24 @@ function getImage(filename: string) {
   
 
     <section data-fadein="up" class="flex flex-col gap-6">
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card ticks={false} type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
-                Gain Tripoli rocketry certifications supported by workshops
-            </Card>
-            <Card ticks={false} type="Student Development" title="Workshops" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+        <section class="grid grid-cols-1 md:grid-cols-6 gap-6 ">
+            
+            <Card className='md:col-span-4 md:row-span-2' ticks={false} type="Student Development" title="Workshops" image={getImage("group0.jpg")}>
                 Students can work on their rocket kits and be advised by peers
             </Card>
-             <Card ticks={false} type="Volunteering" title="K-12 Outreach" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+            <Card className='md:col-span-2' ticks={false} type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("TRABlack.jpg")}>
+                Gain Tripoli rocketry certifications supported by our workshops
+            </Card>
+            <Card className='md:col-span-2' ticks={false} type="Student Development" title="Internships">
+                Many Alumni and current members...
+            </Card>
+             <Card className='md:col-span-3' ticks={false} type="Volunteering" title="K-12 Outreach" btnText="Invite Our Team" href="mailto:aiaafresno@gmail.com" variant="secondary" image={getImage("outreach0.jpg")}>
                 2000+ people impacted, stats etc etc etc
             </Card>
-             <Card ticks={false} type="Research" title="Prop" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
+            <Card className='md:col-span-3' ticks={false} type="Competition" title="NASA USLI" image={getImage("sli26teamsign.jpeg")}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Card>
-            <Card ticks={false} type="Research" title="Abks" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Card>
-            <Card ticks={false} type="Competition" title="NASA USLI" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("FAR0.webp")}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Card>
+            
         </section>
 
     </section>

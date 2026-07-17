@@ -1,33 +1,34 @@
 ---
 import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
 ---
 
 <Section index="01" title="PROJECTS" subheading="What we're working on right now." className="max-w-full" id="projects">
     <!-- cardgrid -->
-   <section data-fadein="right" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card type="Active" title="Project One" btnText="Learn More" href="#wikip1" variant="outline">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+   <section data-fadein="right" class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Card className='col-span-2' type="Active • Competition" title="NASA Student Launch (2026-2027)" btnText="Learn More" external={true} href="https://www.nasa.gov/learning-resources/nasa-student-launch/" variant="secondary">
+          A 9-month long challenge that tasks student teams from across the U.S. to design, build, test, and launch a high-powered rocket carrying a scientific or engineering payload. 
+          <section class="w-full h-auto flex flex-col mt-auto">
+      <Button href="#wikip1" variant='primary' external={true}>APPLY NOW</Button>
+    </section>
         </Card>
-        <Card type="Planning" title="Project One" btnText="Apply Now" href="#wikip1" variant="outline">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <Card type="Planning • Research" title="Propulsion" btnText="Apply Now" href="#wikip1" variant="outline">
+          Research on liquid rocket engines. Starting with Mojave Sphinx, an open-source <strong>liquid bipropellant</strong> propulsion system.
         </Card>
-        <Card type="Research" title="Project One" btnText="Learn More" href="#wikip1" variant="outline">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <Card type="Active • Research" title="Airbrakes" btnText="Learn More" href="#wikip1" variant="outline">
+          Active apogee targeting.
         </Card>
    </section>
         <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
 
     <h4 class="text-3xl font-normal text-foreground">What we worked on in the past.</h4>
-<section data-fadein="left" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card type="Active" title="Project One" btnText="Learn More" href="#wikip1" variant="outline">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+<section data-fadein="left" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card type="competition" title="NASA Student Launch (2025-2026)" btnText="25-26 Handbook" href="#wikip1" variant="outline">
+          The <strong>FS-2 Hellhound</strong> .....
         </Card>
-        <Card type="Planning" title="Project One" btnText="Apply Now" href="#wikip1" variant="outline">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </Card>
-        <Card type="Research" title="Project One" btnText="Learn More" href="#wikip1" variant="outline">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <Card type="competition" title="NASA Student Launch (2024-2025)">
+          Our first time competing in NASA Student Launch. Our rocket <strong>Big Dawg</strong>....
         </Card>
    </section>
 </Section>

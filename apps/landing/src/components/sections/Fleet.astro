@@ -2,7 +2,7 @@
 import Section from '../ui/Section.astro';
 import VehicleCard from '../ui/VehicleCard.astro';
 import { Image } from 'astro:assets';
-import VehicleOneImage from '../../assets/FAR0.webp';
+import BigDawg from '../../assets/images/bdhs1.webp';
 import F2HellHoundImage from '../../assets/images/fsuhh0.jpg';
 ---
 
@@ -10,21 +10,21 @@ import F2HellHoundImage from '../../assets/images/fsuhh0.jpg';
      <!-- cardgrid -->
      <section data-fadein="left" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <VehicleCard image={F2HellHoundImage} alt="FS-2 Hellhound Rocket" title="FS-2 Hellhound" description="NASA USLI 25-26" stats={[
-               { label: 'Apogee', value: '0,000 FT' },
-               { label: 'Motor', value: 'J800T' },
-               { label: 'Thrust', value: '0.0 kN' },
-               { label: 'Diameter', value: '0.0 IN' },
-               { label: 'Length', value: '0.0 IN' },
-               { label: 'Status', value: 'FLOWN' }
+               { label: 'Apogee', value: '5,600 FT.' },
+               { label: 'Diameter', value: '5.5 IN.' },
+               { label: 'Length', value: '7 FT. 3 IN.' },
+               { label: 'Weight', value: '36.1 LBS' },
+               { label: 'Motor', value: 'AEROTECH L1256WS' },
+               { label: 'Mach', value: '0.56' },
 
           ]} />
-          <VehicleCard image={VehicleOneImage} alt="Big Dawg Rocket" title="Big Dawg" description="NASA USLI 24-25" stats={[
-               { label: 'Apogee', value: '0,000 FT' },
-               { label: 'Motor', value: 'J800T' },
-               { label: 'Thrust', value: '0.0 kN' },
-               { label: 'Diameter', value: '0.0 IN' },
-               { label: 'Length', value: '0.0 IN' },
-               { label: 'Status', value: 'FLOWN' }
+          <VehicleCard image={BigDawg} alt="Big Dawg Rocket" title="Big Dawg" description="NASA USLI 24-25" stats={[
+               { label: 'Apogee', value: '0,000 FT.' },
+               { label: 'Diameter', value: '0 IN.' },
+               { label: 'Length', value: '0 FT. 0 IN.' },
+               { label: 'Weight', value: '00.0 LBS' },
+               { label: 'Motor', value: 'motor' },
+               { label: 'Mach', value: '0.0' },
           ]} />
           
      
