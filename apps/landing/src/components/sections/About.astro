@@ -53,7 +53,7 @@ function getImage(filename: string) {
   
 
     <section data-fadein="up" class="flex flex-col gap-6">
-        <section class="grid grid-cols-1 md:grid-cols-6 gap-6 ">
+        <section class="grid grid-cols-1 md:grid-cols-6 gap-4 ">
             
             <Card className='md:col-span-4 md:row-span-2' ticks={false} type="Student Development" title="Workshops" image={getImage("group0.jpg")}>
                 Students can work on their rocket kits and be advised by peers
@@ -75,10 +75,10 @@ function getImage(filename: string) {
 
     </section>
 
-    <section data-fadein="up" class="flex flex-col gap-6">
+    <section data-fadein="up" class="flex flex-col gap-4">
     <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
       <h4 class="text-3xl font-normal text-foreground">Our Officers.</h4>
-    <section data-fadein="up" class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <section data-fadein="up" class="grid grid-cols-1 md:grid-cols-4 gap-4">
     {Object.entries(officerInfo).map(([position, info]) => (
       <Card ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
         {info.bio}

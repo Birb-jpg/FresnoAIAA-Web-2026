@@ -11,9 +11,9 @@
 
 @theme {
 /* Core Brand Colors (Deep space to electric aerospace accents) */
-  --color-brand-light: #38BDF8; /* Electric Cyan: sharp highlight for active states & subtle accents */
-  --color-brand:       #0284C7; /* Core Blue: primary buttons, links, and key focus elements */
-  --color-brand-dark:  #0369A1; /* Deep Oceanic: hover states & active borders */
+  --color-brand-light: #F87171; /* Electric Cyan: sharp highlight for active states & subtle accents */
+  --color-brand:       #EF4444; /* Core Blue: primary buttons, links, and key focus elements */
+  --color-brand-dark:  #DC2626; /* Deep Oceanic: hover states & active borders */
 
   /* Surface & Text Colors (Sleek dark mode hierarchy) */
   --color-background:  #0B0F19; /* Cosmic Obsidian: deep, ultra-dark navy background */

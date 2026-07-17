@@ -1,8 +1,16 @@
 ---
 import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro'
 ---
 
 
 <Section index="04" title="WIKI" subheading="All of our knowledge, in one place." className="max-w-full" id="wiki">
-    <p data-fadein="up" class="text-center w-full">Work In Progress... Stay tuned!</p>
+    <section data-fadein="up" class="grid grid-cols-4 gap-4">
+        <Card className='col-span-2' type="" title="Wiki Status">
+            Work In Progress... Stay tuned!.
+        </Card>
+        <Card className='col-span-2' type="" title="What is it?">
+            The wiki will hold the collective rocketry knowledge at Fresno State.
+        </Card>
+    </section>
 </Section>
