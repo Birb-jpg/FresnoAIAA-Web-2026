@@ -3,13 +3,13 @@ import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
 import FAR from '../../assets/FAR0.webp';
 ---
-<header class="w-dvw h-dvh px-12">
+<header class="w-full h-dvh px-6 sm:px-10 lg:px-12">
 
-    <section data-fadein="left" data-fadein-delay="200" class="flex flex-col max-w-1/3 h-full items-center">
+    <section data-fadein="left" data-fadein-delay="200" class="flex flex-col w-full max-w-2xl lg:max-w-1/3 h-full items-start lg:items-center">
         <section class="flex flex-col h-full items-start justify-center gap-6">
-            <h2 class="text-lg uppercase font-normal tracking-widest" data-fadein="up" data-fadein-delay="1000">AIAA Student Chapter at Fresno State</h2>   
-            <h1 class="text-7xl font-light tracking-normal uppercase">Building Rockets. <strong data-fadein="none" data-fadein-delay="700" class="font-extrabold text-brand-light">Launching Dreams.</strong></h1>
-            <p class="text-base max-w-lg text-gray-400"  data-fadein="down" data-fadein-delay="1500">We are a student organization dedicated to promoting aerospace engineering and innovation.</p>
+            <h2 class="text-sm sm:text-base lg:text-lg uppercase font-normal tracking-widest" data-fadein="up" data-fadein-delay="1000">AIAA Student Chapter at Fresno State</h2>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-light tracking-normal uppercase text-balance">Building Rockets. <strong data-fadein="none" data-fadein-delay="700" class="font-extrabold text-brand-light">Launching Dreams.</strong></h1>
+            <p class="text-sm sm:text-base max-w-lg text-gray-400"  data-fadein="down" data-fadein-delay="1500">We are a student organization dedicated to promoting aerospace engineering and innovation.</p>
             <span data-fadein="down" data-fadein-delay="1500">
                 <Button href="#about" variant="primary" size="lg">Learn More</Button>
             </span>

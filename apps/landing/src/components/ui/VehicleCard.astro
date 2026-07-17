@@ -26,7 +26,7 @@ const { image, alt, title, description, stats } = Astro.props;
     <h3 class="text-lg text-foreground font-bold tracking-widest">{title}</h3>
     <p class="text-sm text-foreground/50">{description}</p>
     <hr class="text-foreground/20 my-2" />
-    <section class="flex flex-row justify-between gap-2">
+    <section class="grid grid-cols-3 sm:flex sm:flex-row sm:justify-between gap-x-2 gap-y-3">
         {stats.map((stat) => (
         <Stat label={stat.label} value={stat.value} />
         ))}

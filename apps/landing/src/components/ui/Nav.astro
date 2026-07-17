@@ -1,19 +1,83 @@
 ---
 import Button from '../ui/Button.astro';
-import {Image} from 'astro:assets';
-import Logo from '../assets/FAR0.webp';
+
+const links = [
+    { href: '#projects', label: 'Projects' },
+    { href: '#fleet', label: 'Fleet' },
+    { href: '#about', label: 'About Us' },
+    { href: '#wiki', label: 'Wiki' },
+    { href: '#contact', label: 'Contact' },
+];
 ---
 
-<section data-fadein="up" data-fadein-delay="200" class="w-full flex flex-row justify-around items-center py-4 fixed z-2">
-    <!-- <a href="/"><Image src={Logo} alt="AIAA // Fresno Logo" class="w-12 h-12 object-cover" /></a> -->
-    <a href="#" class="text-md font-normal uppercase text-center tracking-widest text-white">AIAA <span class="text-brand-light font-bold">//</span> Fresno State</a>
-    <ul class="flex flex-row items-center">
-        <li><Button href="#projects" variant="ghost" size="md">Projects</Button></li>
-        <li><Button href="#fleet" variant="ghost" size="md">Fleet</Button></li>
-        <li><Button href="#about" variant="ghost" size="md">About Us</Button></li>
-        <li><Button href="#wiki" variant="ghost" size="md">Wiki</Button></li>
-        <li><Button href="#contact" variant="ghost" size="md">Contact</Button></li>
-        <li><Button href="#sponsors" variant="outline" className="border-brand-light" size="md">Sponsors</Button></li>
+<nav class="w-full fixed top-0 left-0 z-20">
+    <div data-fadein="up" data-fadein-delay="200" class="w-full flex flex-row justify-between md:justify-around items-center px-6 py-4">
+        <a href="#" class="text-md font-normal uppercase text-center tracking-widest text-white">AIAA <span class="text-brand-light font-bold">//</span> Fresno State</a>
 
-    </ul>
-</section>
+        <!-- Desktop links -->
+        <ul class="hidden md:flex flex-row items-center">
+            {links.map((l) => (
+                <li><Button href={l.href} variant="ghost" size="md">{l.label}</Button></li>
+            ))}
+            <li><Button href="#sponsors" variant="outline" className="border-brand-light" size="md">Sponsors</Button></li>
+        </ul>
+
+        <!-- Mobile toggle -->
+        <button
+            id="nav-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-md border border-brand/20 text-foreground"
+        >
+            <span class="block w-5 h-0.5 bg-current transition-all duration-300"></span>
+            <span class="block w-5 h-0.5 bg-current transition-all duration-300"></span>
+            <span class="block w-5 h-0.5 bg-current transition-all duration-300"></span>
+        </button>
+    </div>
+
+    <!-- Mobile panel -->
+    <div
+        id="mobile-nav"
+        data-open="false"
+        class="md:hidden flex-col gap-2 px-6 pt-2 pb-6 bg-background/95 backdrop-blur-md border-b border-brand/15"
+    >
+        <ul class="flex flex-col gap-1">
+            {links.map((l) => (
+                <li><Button href={l.href} variant="ghost" size="md" className="w-full justify-start">{l.label}</Button></li>
+            ))}
+            <li class="mt-2"><Button href="#sponsors" variant="outline" className="w-full justify-center border-brand-light" size="md">Sponsors</Button></li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+    #mobile-nav { display: none; }
+    #mobile-nav[data-open="true"] { display: flex; }
+    @media (min-width: 768px) {
+        #mobile-nav { display: none !important; }
+    }
+    /* Hamburger -> X when open */
+    #nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(0.5rem) rotate(45deg); }
+    #nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    #nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-0.5rem) rotate(-45deg); }
+</style>
+
+<script>
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-nav');
+
+    const setOpen = (open: boolean) => {
+        menu?.setAttribute('data-open', String(open));
+        toggle?.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle?.addEventListener('click', () => {
+        setOpen(menu?.getAttribute('data-open') !== 'true');
+    });
+
+    menu?.querySelectorAll('a').forEach((a) =>
+        a.addEventListener('click', () => setOpen(false))
+    );
+</script>
