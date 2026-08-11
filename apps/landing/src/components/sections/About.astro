@@ -1,14 +1,16 @@
 ---
 // OfficersSection.astro
 import Section from '../ui/Section.astro';
+import OfficerCard from '../ui/Officer.astro';
 import Card from '../ui/Card.astro';
+
 const officerImages = import.meta.glob('../../assets/*/*.{webp,png,jpg,jpeg}', { eager: true }) as Record<string, { default: string }>;
 
 const officerInfo = {
   "President": {
-    name: 'Jane Doe',
-    bio: 'Woosh x1',
-    imageFile: 'FAR0.webp', // just the filename in the officers folder
+    name: 'Cyan Roberts',
+    bio: 'el presidente',
+    imageFile: 'cyanr.png', // just the filename in the officers folder
   },
   "Vice President": {
     name: 'John Smith',
@@ -16,30 +18,35 @@ const officerInfo = {
     imageFile: 'FAR0.webp',
   },
   "Treasurer": {
-    name: 'John Smith',
-    bio: 'Woosh x3',
-    imageFile: 'FAR0.webp',
+    name: 'Daniel Gooboian',
+    bio: 'goob goob',
+    imageFile: 'danielg.png',
   },
   "Secretary": {
-    name: 'John Smith',
-    bio: 'Woosh x4',
-    imageFile: 'FAR0.webp',
+    name: 'Isaac Lay',
+    bio: 'computer nerd',
+    imageFile: 'isaacl1.jpg',
   },
-  "Event Coordinator": {
-    name: 'John Smith',
-    bio: 'Woosh x5',
-    imageFile: 'FAR0.webp',
+  "Launch Coordinator": {
+    name: 'Ethan Jarocki',
+    bio: 'L3 rocket nerd',
+    imageFile: 'ethanj.jpg',
   },
-  "K-12 Coordinator": {
-    name: 'John Smith',
-    bio: 'Woosh x6',
-    imageFile: 'FAR0.webp',
-  },
-  "Media Coordinator": {
-    name: 'John Smith',
-    bio: 'Woosh x7',
-    imageFile: 'FAR0.webp',
-  },
+  // "Event Coordinator": {
+  //   name: 'John Smith',
+  //   bio: 'Woosh x5',
+  //   imageFile: 'FAR0.webp',
+  // },
+  // "K-12 Coordinator": {
+  //   name: 'John Smith',
+  //   bio: 'Woosh x6',
+  //   imageFile: 'FAR0.webp',
+  // },
+  // "Media Coordinator": {
+  //   name: 'John Smith',
+  //   bio: 'Woosh x7',
+  //   imageFile: 'FAR0.webp',
+  // },
 };
 
 function getImage(filename: string) {
@@ -56,19 +63,19 @@ function getImage(filename: string) {
         <section class="grid grid-cols-1 md:grid-cols-6 gap-4 ">
             
             <Card className='md:col-span-4 md:row-span-2' ticks={false} type="Student Development" title="Workshops" image={getImage("group0.jpg")}>
-                Students can work on their rocket kits and be advised by peers
+                Students can work on their rocket kits and be advised by experienced peers.
             </Card>
-            <Card className='md:col-span-2' ticks={false} type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="#wikip1" variant="secondary" image={getImage("TRABlack.jpg")}>
-                Gain Tripoli rocketry certifications supported by our workshops
+            <Card className='md:col-span-2' ticks={false} type="Student Development" title="Tripoli Certifications" btnText="Learn More" href="https://www.tripoli.org/Certification" external={true} variant="secondary" image={getImage("TRABlack.jpg")}>
+                Gain <abbr title="Tripoli Rocketry Association">TRA</abbr> certifications supported by our workshops.
             </Card>
             <Card className='md:col-span-2' ticks={false} type="Student Development" title="Internships">
-                Many Alumni and current members...
+                Many Alumni and current members are employed at <strong>Northrop Grumman</strong>, <strong>SpaceX</strong>, and other aerospace companies. We can help you get there too!
             </Card>
-             <Card className='md:col-span-3' ticks={false} type="Volunteering" title="K-12 Outreach" btnText="Invite Our Team" href="mailto:aiaafresno@gmail.com" variant="secondary" image={getImage("outreach0.jpg")}>
-                2000+ people impacted, stats etc etc etc
+             <Card className='md:col-span-3' ticks={false} type="Volunteering" title="K-12 Outreach" btnText="Invite Our Team" href="mailto:aiaa.csufresno@gmail.com" variant="secondary" image={getImage("outreach0.jpg")}>
+                2000+ students reached through our outreach events.
             </Card>
             <Card className='md:col-span-3' ticks={false} type="Competition" title="NASA USLI" image={getImage("sli26teamsign.jpeg")}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Our flagship competition where we design, build, and launch a high-powered rocket to meet specific requirements set by NASA.
             </Card>
             
         </section>
@@ -78,11 +85,11 @@ function getImage(filename: string) {
     <section data-fadein="up" class="flex flex-col gap-4">
     <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
       <h4 class="text-3xl font-normal text-foreground">Our Officers.</h4>
-    <section data-fadein="up" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <section data-fadein="up" class="grid grid-cols-1 md:grid-cols-3 gap-4">
     {Object.entries(officerInfo).map(([position, info]) => (
-      <Card ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
+      <OfficerCard ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
         {info.bio}
-      </Card>
+      </OfficerCard>
     ))}
   </section>
   </section>

@@ -1,34 +1,64 @@
 ---
 import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
+import PH from '../../../public/aiaalogo.png';
 import Button from '../ui/Button.astro';
 ---
 
 <Section index="01" title="PROJECTS" subheading="What we're working on right now." className="max-w-full" id="projects">
     <!-- cardgrid -->
    <section data-fadein="right" class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className='col-span-2' type="Active • Competition" title="NASA Student Launch (2026-2027)" btnText="Learn More" external={true} href="https://www.nasa.gov/learning-resources/nasa-student-launch/" variant="secondary">
+        <Card className='col-span-2' type="Active • Competition" title="NASA Student Launch (2026-2027)" btnText="Learn More" external={true} href="https://www.nasa.gov/learning-resources/nasa-student-launch/" variant="outline">
           A 9-month long challenge that tasks student teams from across the U.S. to design, build, test, and launch a high-powered rocket carrying a scientific or engineering payload. 
           <section class="w-full h-auto flex flex-col mt-auto">
-      <Button href="#wikip1" variant='primary' external={true}>APPLY NOW</Button>
-    </section>
+        <!-- <Button href="#wikip1" variant='primary' external={true}>APPLY NOW</Button> -->
+      </section>
+      </Card>
+        <Card type="Planning • Research" title="Propulsion" variant="outline" btnText="Learn More" href="https://www.halfcatrocketry.com/mojave-sphinx" external={true}>
+          Building Mojave Sphinx, an open-source <strong>liquid bipropellant</strong> propulsion system.
         </Card>
-        <Card type="Planning • Research" title="Propulsion" btnText="Apply Now" href="#wikip1" variant="outline">
-          Research on liquid rocket engines. Starting with Mojave Sphinx, an open-source <strong>liquid bipropellant</strong> propulsion system.
-        </Card>
-        <Card type="Active • Research" title="Airbrakes" btnText="Learn More" href="#wikip1" variant="outline">
-          Active apogee targeting.
+        <Card type="Active • Research" title="Airbrakes">
+          A method of controlling the <strong>apogee</strong> of a rocket by increasing drag with deployable surfaces.
         </Card>
    </section>
-        <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
 
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
+   
     <h4 class="text-3xl font-normal text-foreground">What we worked on in the past.</h4>
-<section data-fadein="left" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card type="competition" title="NASA Student Launch (2025-2026)" btnText="25-26 Handbook" href="#wikip1" variant="outline">
-          The <strong>FS-2 Hellhound</strong> .....
-        </Card>
-        <Card type="competition" title="NASA Student Launch (2024-2025)">
-          Our first time competing in NASA Student Launch. Our rocket <strong>Big Dawg</strong>....
-        </Card>
-   </section>
+    <section data-fadein="left" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card type="competition" title="NASA Student Launch (2025-2026)" variant="outline" btnText="Launch Video" href="https://www.youtube.com/watch?v=m1yg865Mt7k&t=11546s" external={true}>
+            The <strong>FS-2 Hellhound</strong> was the rocket designed and launched for the 2025-2026 NASA Student Launch competition. It was a high-powered rocket designed to reach an apogee of <strong>5,600 feet</strong>.
+          </Card>
+          <Card type="competition" title="NASA Student Launch (2024-2025)" variant="outline" btnText="Launch Video" href="https://www.youtube.com/watch?v=Nn6i4pJJh_4&t=19042s" external={true}>
+          <strong>Big Dawg</strong> was our first ever competition entry for the NASA Student Launch competition. It was designed to reach an apogee of <strong>5,200 feet</strong>.
+          </Card>
+    </section>
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
+
+     <h4 class="text-3xl font-normal text-foreground">Sponsors keep us going.</h4>
+    <section data-fadein="left" class="flex flex-row gap-6 justify-center *:max-w-1/3">
+        <Card type="Tier 1 Sponsor" title="AIAA" image={PH}/>
+        <Card type="Tier 1 Sponsor" title="AIAA" image={PH}/>
+        <Card type="Tier 1 Sponsor" title="AIAA" image={PH}/>
+
+    </section>
+    <section data-fadein="left" class="flex flex-row gap-6 justify-center *:max-w-1/5">
+        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
+        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
+        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
+        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
+        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
+    </section>
+    <section data-fadein="left" class="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <Card className="col-span-2" type="" title="To our Sponsors...">
+        Thank you to all of our sponsors for supporting our team and helping us reach new heights. We couldn't do it without you!
+    </Card>
+      <Card className="col-span-3" type="" title="Sponsor Us" btnText="Sponsor Packet" variant="secondary" href="#">
+        Are you a company or organization that would like to sponsor our team? We are always looking for new sponsors. Please contact us if you are interested in sponsoring our team.
+        <section class="w-full h-auto flex flex-col mt-auto">
+          <Button href="mailto:aiaa.csufresno@gmail.com" variant='primary' external={true}>Contact Us</Button>
+        </section>
+      </Card>
+    </section>
+
 </Section>
