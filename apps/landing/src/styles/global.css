@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import '@fontsource-variable/inter/wght.css';
-@import '@fontsource-variable/raleway/wght.css';
-
+@import '@fontsource-variable/space-grotesk/wght.css';
 @import '@fontsource/ibm-plex-mono';
 
 :root{
