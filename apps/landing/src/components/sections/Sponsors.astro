@@ -9,9 +9,11 @@ interface Props {
   index?: string;
   /** Render tiers that have no sponsors yet as an open "your logo here" slot. */
   showOpenTiers?: boolean;
+  /** 1 on its own page (the default), 2 if this ever joins the home page stack. */
+  headingLevel?: 1 | 2;
 }
 
-const { index = "01", showOpenTiers = true } = Astro.props;
+const { index = "01", showOpenTiers = true, headingLevel = 1 } = Astro.props;
 
 const CONTACT = 'mailto:aiaa.csufresno@gmail.com';
 
@@ -31,7 +33,7 @@ const ramp = (i: number, range: { top: number; bottom: number }) =>
     : range.top + (range.bottom - range.top) * (i / (tiers.length - 1));
 ---
 
-<Section index={index} title="SPONSORS" subheading="The people who keep us flying." className="max-w-full" id="sponsors">
+<Section index={index} headingLevel={headingLevel} title="SPONSORS" subheading="The people who keep us flying." className="max-w-full" id="sponsors">
   <section data-fadein="up" class="flex flex-col gap-14">
     {tiers.map((tier, i) => (
       <SponsorTier
@@ -41,6 +43,7 @@ const ramp = (i: number, range: { top: number; bottom: number }) =>
         logoHeight={tier.logoHeight ?? `${ramp(i, LOGO_REM)}rem`}
         gap={`${ramp(i, GAP_REM)}rem`}
         openSlotHref={CONTACT}
+        headingLevel={headingLevel === 1 ? 2 : 3}
       />
     ))}
   </section>
@@ -52,7 +55,7 @@ const ramp = (i: number, range: { top: number; bottom: number }) =>
       Every sponsor above put hardware, software, or funding behind a team of students.
       Thank you! If your company wants a spot on this wall, we'd love to talk.
     </p>
-    <section class="w-md h-auto flex flex-col mt-auto gap-2">
+    <section class="w-full max-w-md h-auto flex flex-col mt-auto gap-2">
       <Button href={CONTACT} variant="primary" external={true}>Become a Sponsor</Button>
       <Button href={CONTACT} variant="secondary" external={true}>Sponsorship Packet</Button>
     </section>

@@ -20,13 +20,19 @@ const { image, alt, title, description, stats } = Astro.props;
 ---
 
 <section class="flex flex-col flex-1 border border-brand/20 gap-2">
-  <Image src={image} alt={alt} class="w-auto h-full object-cover border-b-2 border-inherit" />
+  <Image
+    src={image}
+    alt={alt}
+    class="w-auto h-full object-cover border-b-2 border-inherit"
+    widths={[480, 640, 960, 1280]}
+    sizes="(max-width: 768px) 92vw, 500px"
+  />
 
   <section class="flex flex-col p-6">
     <h3 class="text-lg text-foreground font-bold tracking-widest">{title}</h3>
     <p class="text-sm text-foreground/50">{description}</p>
     <hr class="text-foreground/20 my-2" />
-    <section class="grid grid-cols-3 gap-3 w-full">
+    <section class="grid grid-cols-2 lg:grid-cols-3 gap-3 w-full">
         {stats.map((stat) => (
         <Stat label={stat.label} value={stat.value} />
         ))}

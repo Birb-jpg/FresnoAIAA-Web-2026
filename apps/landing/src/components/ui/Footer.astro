@@ -4,12 +4,12 @@ import { Icon } from 'astro-icon/components';
 const year = new Date().getFullYear();
 
 const nav = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Fleet', href: '#fleet' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Wiki', href: '#wiki' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'Sponsors', href: '#sponsors' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Fleet', href: '/#fleet' },
+  { label: 'About Us', href: '/#about' },
+  { label: 'Wiki', href: '/#wiki' },
+  { label: 'Contact', href: '/#contact' },
+  { label: 'Sponsors', href: '/sponsors' },
 ];
 
 const socials = [
@@ -40,7 +40,7 @@ const socials = [
       <!-- Brand -->
       <div data-fadein="up" class="max-w-sm">
         <a
-          href="#"
+          href="/"
           class="text-lg font-normal uppercase tracking-widest text-white transition-colors hover:text-brand-light"
         >
           AIAA <span class="font-bold text-brand-light">//</span> Fresno State
@@ -94,7 +94,7 @@ const socials = [
                     rel="noopener noreferrer"
                     class="underline-hover inline-flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground"
                   >
-                    <Icon name={s.icon} class="h-3.5 w-auto text-foreground/40" />
+                    <Icon name={s.icon} class="h-3.5 w-auto text-foreground/55" />
                     {s.label}
                   </a>
                 </li>
@@ -110,10 +110,10 @@ const socials = [
 
     <!-- Bottom bar -->
     <div class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-      <p class="font-mono text-xs text-foreground/40">
+      <p class="font-mono text-xs text-foreground/55">
         &copy; {year} AIAA Fresno State. All rights reserved.
       </p>
-      <p class="flex items-center gap-2 font-mono text-xs text-foreground/40">
+      <p class="flex items-center gap-2 font-mono text-xs text-foreground/55">
         <span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-brand-light"></span>
         Systems nominal — Fresno, CA
       </p>  

@@ -12,13 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource-variable/gabarito": "^5.2.8",
-    "@fontsource-variable/inter": "^5.2.8",
-    "@fontsource-variable/quicksand": "^5.2.10",
-    "@fontsource-variable/raleway": "^5.2.8",
-    "@fontsource-variable/urbanist": "^5.2.7",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.2.7",
-    "@fontsource/inter": "^5.2.8",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.90",
     "@tailwindcss/vite": "^4.3.2",

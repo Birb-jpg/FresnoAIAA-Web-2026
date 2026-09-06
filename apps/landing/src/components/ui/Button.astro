@@ -24,16 +24,16 @@ const {
 const base =
     "inline-flex items-center justify-center gap-2 uppercase tracking-wide font-medium rounded-full " +
     "transition-colors duration-150 focus-visible:outline-none " +
-    "focus-visible:ring-1 focus-visible:ring-(--color-brand-light) focus-visible:ring-offset-2 " +
+    "focus-visible:ring-2 focus-visible:ring-(--color-brand-light) focus-visible:ring-offset-2 " +
     "focus-visible:ring-offset-(--color-background) disabled:opacity-40 disabled:pointer-events-none";
 
 const variants = {
     primary:
-        "bg-(--color-brand) text-white border border-(--color-brand) hover:bg-(--color-brand-dark) hover:border-(--color-brand-dark)",
+        "bg-(--color-brand-dark) text-white border border-(--color-brand-dark) hover:bg-(--color-brand-deep) hover:border-(--color-brand-deep)",
     secondary:
         "bg-transparent text-(--color-foreground) border border-(--color-foreground)/20 hover:border-(--color-brand-light) hover:text-(--color-brand-light)",
     outline:
-        "bg-transparent text-(--color-foreground) border border-slate-800 hover:bg-brand hover:text-white",
+        "bg-transparent text-(--color-foreground) border border-(--color-foreground)/20 hover:bg-(--color-brand-dark) hover:text-white hover:border-(--color-brand-dark)",
     ghost:
         "bg-transparent text-(--color-foreground)/80 border border-transparent hover:text-(--color-brand-light) underline-hover",
 };

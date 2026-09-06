@@ -14,7 +14,7 @@ import Button from '../ui/Button.astro';
 <Section index="01" title="PROJECTS" subheading="What we're working on right now." className="max-w-full" id="projects">
     <!-- cardgrid -->
    <section data-fadein="right" class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className='col-span-2' type="Active • Competition" title="NASA Student Launch (2026-2027)" btnText="Learn More" external={true} href="https://www.nasa.gov/learning-resources/nasa-student-launch/" variant="outline">
+        <Card className='md:col-span-2' type="Active • Competition" title="NASA Student Launch (2026-2027)" btnText="Learn More" external={true} href="https://www.nasa.gov/learning-resources/nasa-student-launch/" variant="outline">
           A 9-month long challenge that tasks student teams from across the U.S. to design, build, test, and launch a high-powered rocket carrying a scientific or engineering payload. 
           <section class="w-full h-auto flex flex-col mt-auto">
         <!-- <Button href="#wikip1" variant='primary' external={true}>APPLY NOW</Button> -->
@@ -30,7 +30,7 @@ import Button from '../ui/Button.astro';
 
         <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
    
-    <h4 class="text-3xl font-normal text-foreground">What we worked on in the past.</h4>
+    <h3 class="text-3xl font-normal text-foreground">What we worked on in the past.</h3>
     <section data-fadein="left" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card type="competition" title="NASA Student Launch (2025-2026)" variant="outline" btnText="2026 Stream" href="https://www.youtube.com/watch?v=m1yg865Mt7k&t=11546s" external={true}>
             The <strong>FS-2 Hellhound</strong> was the rocket designed and launched for the 2025-2026 NASA Student Launch competition. It was a high-powered rocket designed to reach an apogee of <strong>5,600 feet</strong>.
@@ -41,7 +41,7 @@ import Button from '../ui/Button.astro';
     </section>
             <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
 
-     <h4 class="text-3xl font-normal text-foreground">Sponsors keep us going.</h4>
+     <h3 class="text-3xl font-normal text-foreground">Sponsors keep us going.</h3>
     
     <ScrollingBanner speed={35} gap="gap-16" itemHeight="6rem" dim label="Our sponsors" className="py-2" pauseOnHover={false}>
       <Image src={FSAIAA} alt="AIAA Fresno State" />
@@ -50,10 +50,10 @@ import Button from '../ui/Button.astro';
       </a>
     </ScrollingBanner>
     <section data-fadein="left" class="grid grid-cols-1 md:grid-cols-5 gap-6">
-      <Card className="col-span-2" type="" title="To our Sponsors..." btnText="See All Sponsors" variant="outline" href="/sponsors">
+      <Card className="md:col-span-2" type="" title="To our Sponsors..." btnText="See All Sponsors" variant="outline" href="/sponsors">
         Thank you to all of our sponsors for supporting our team and helping us reach new heights. We couldn't do it without you!
     </Card>
-      <Card className="col-span-3" type="" title="Sponsor Us" btnText="Sponsor Packet" variant="secondary" href="#">
+      <Card className="md:col-span-3" type="" title="Sponsor Us" btnText="Sponsor Packet" variant="secondary" href="#">
         Are you a company or organization that would like to sponsor our team? We are always looking for new sponsors so please contact us if you're interested!
         <section class="w-full h-auto flex flex-col mt-auto">
           <Button href="mailto:aiaa.csufresno@gmail.com" variant='primary' external={true}>Contact Us</Button>

@@ -84,8 +84,8 @@ function getImage(filename: string) {
 
     <section data-fadein="up" class="flex flex-col gap-4">
     <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
-      <h4 class="text-3xl font-normal text-foreground">Our Officers and Leads.</h4>
-    <section data-fadein="up" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <h3 class="text-3xl font-normal text-foreground">Our Officers and Leads.</h3>
+    <section data-fadein="up" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
     {Object.entries(officerInfo).map(([position, info]) => (
       <OfficerCard ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
         {info.bio}

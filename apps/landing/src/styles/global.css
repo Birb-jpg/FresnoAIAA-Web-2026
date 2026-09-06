@@ -10,19 +10,23 @@
 }
 
 @theme {
-/* Core Brand Colors (Deep space to electric aerospace accents) */
-  --color-brand-light: #F87171; /* Electric Cyan: sharp highlight for active states & subtle accents */
-  --color-brand:       #EF4444; /* Core Blue: primary buttons, links, and key focus elements */
-  --color-brand-dark:  #DC2626; /* Deep Oceanic: hover states & active borders */
+  /* Core Brand Colors (Signal Red - hot, precise, unmistakably ours)
+     Every value below is contrast-checked against --color-background.
+     Roles are NOT interchangeable: the two bright reds are for text and
+     accents, the two deep reds are fills that carry white labels. */
+  --color-brand-light: #FF8A80; /* Ablation Glow: small accent text, eyebrows, labels — 8.3:1 */
+  --color-brand:       #FF4438; /* Signal Red: links, hero accent, live borders — 5.7:1 */
+  --color-brand-dark:  #C0261B; /* Booster Red: solid fills; white label on it — 5.9:1 */
+  --color-brand-deep:  #8E1610; /* Char: pressed/hover state under a filled button */
 
-  /* Surface & Text Colors (Sleek dark mode hierarchy) */
-  --color-background:  #0B0F19; /* Cosmic Obsidian: deep, ultra-dark navy background */
-  --color-foreground:  #F8FAFC; /* Starlight White: crisp, high-contrast primary text */
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-sans: 'Raleway Variable', sans-serif;
-
+  /* Surface & Text Colors (warm graphite hierarchy) */
+  --color-background:  #120C0D; /* Scorched Black: near-black carrying a red undertone */
+  --color-foreground:  #FAF6F6; /* Contrail: warm white, 18:1 on background */
+  
+  /* Typography (Engineered, precise, modern) */
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace; /* For telemetry, specs, and raw data points */
+  --font-sans: 'Space Grotesk', 'Inter Variable', sans-serif; /* Geometric, wide, ultra-modern aerospace feel */
 }
-
 @layer base {
   /* Apply them globally to the page */
   body {
@@ -37,12 +41,14 @@
 
   /* Set defaults for other global elements */
   h1, h2, h3, h4 {
-    @apply text-brand-dark font-bold font-sans;
+    @apply text-foreground font-bold font-sans;
   }
 
 
+  /* On a dark page, links brighten on hover — dropping to the fill red would
+     take them to 3.2:1. */
   a {
-    @apply text-brand hover:text-brand-dark transition-colors;
+    @apply text-brand hover:text-brand-light transition-colors;
   }
 }
 @layer components {
@@ -73,6 +79,16 @@
     @apply opacity-100;
     transform: translate(0, 0) scale(1);
     filter: blur(0);
+  }
+
+  /* Reveal without the travel/blur for anyone who asked for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    [data-fadein] {
+      transform: none;
+      filter: none;
+      transition-duration: 1ms;
+      transition-delay: 0ms;
+    }
   }
 }
 .no-scrollbar::-webkit-scrollbar { display: none; }

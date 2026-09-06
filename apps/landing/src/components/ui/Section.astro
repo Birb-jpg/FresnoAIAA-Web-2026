@@ -2,27 +2,31 @@
 import { twMerge } from "tailwind-merge";
 interface Props {
     id?: string;
+    /** 1 when this section is the main heading of its own page, 2 inside a stack of sections. */
+    headingLevel?: 1 | 2;
     index?: string;
     title: string;
     subheading?: string;
     className?: string;
 }
  
-const { id = "", index = "", title, subheading, className = ""} = Astro.props;
+const { id = "", index = "", title, subheading, className = "", headingLevel = 2 } = Astro.props;
+
+const Heading = `h${headingLevel}` as 'h1' | 'h2';
 const base = "flex flex-col gap-8 w-full scroll-mt-24";
 
 const classes = twMerge(base, className);
 
 ---
-<section class={classes} id={id}>
+<section class={classes} id={id} aria-label={title}>
     <section data-fadein="up">
-        <h3 class="text-xs uppercase tracking-tight font-mono text-foreground/50 font-thin">
+        <p class="text-xs uppercase tracking-tight font-mono text-foreground/50 font-thin">
             {index}
             <span class="text-brand-light font-bold"> / </span>
             {title}
-        </h3>
+        </p>
         {subheading && (
-            <h4 class="text-3xl font-sans font-normal text-foreground tracking-tight">{subheading}</h4>
+            <Heading class="text-3xl font-sans font-normal text-foreground tracking-tight">{subheading}</Heading>
         )}
     </section>
     <slot />

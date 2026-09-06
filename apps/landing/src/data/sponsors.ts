@@ -54,7 +54,7 @@ export const sponsorTiers: SponsorTier[] = [
         name: "LabJack",
         logo: LabJack,
         href: "https://www.labjack.com",
-        invert: false,
+        invert: true,
         scale: .9,
       }
     ],

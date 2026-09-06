@@ -13,6 +13,8 @@ interface Props {
   sponsors: Sponsor[];
   /** Shown instead of logos when the tier has no sponsors yet. */
   openSlotHref?: string;
+  /** Heading level for the tier name — one below whatever heads the section. */
+  headingLevel?: 2 | 3;
   className?: string;
 }
 
@@ -23,8 +25,11 @@ const {
   gap,
   sponsors,
   openSlotHref,
+  headingLevel = 3,
   className = "",
 } = Astro.props;
+
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
 
 // current supporters lead the row, former ones trail it
 const ordered = [...sponsors].sort(
@@ -34,7 +39,7 @@ const ordered = [...sponsors].sort(
 const logoClasses = (sponsor: Sponsor) =>
   twMerge(
     "w-auto max-w-none object-contain transition duration-300 ease-out",
-    "opacity-60 grayscale group-hover/logo:opacity-100 group-hover/logo:grayscale-0",
+    "grayscale opacity-70 group-hover/logo:opacity-100 group-hover/logo:grayscale-0",
     sponsor.invert && "brightness-0 invert",
   );
 ---
@@ -44,11 +49,11 @@ const logoClasses = (sponsor: Sponsor) =>
   style={`--tier-logo:${logoHeight};--tier-gap:${gap};`}
 >
   <header class="flex items-baseline gap-4">
-    <h5 class="font-mono text-xs font-normal uppercase tracking-widest text-brand-light whitespace-nowrap">
+    <Heading class="font-mono text-xs font-normal uppercase tracking-widest text-brand-light whitespace-nowrap">
       {name}
-    </h5>
+    </Heading>
     {blurb && (
-      <span class="font-mono text-xs tracking-tight text-foreground/40 whitespace-nowrap">
+      <span class="hidden sm:inline font-mono text-xs tracking-tight text-foreground/55 whitespace-nowrap">
         {blurb}
       </span>
     )}
@@ -61,7 +66,7 @@ const logoClasses = (sponsor: Sponsor) =>
       return (
         <li class="flex flex-col items-center gap-2">
           <Wrapper
-            class="group/logo flex h-[var(--tier-logo)] items-center"
+            class="group/logo flex h-[var(--tier-logo)] items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             href={sponsor.href}
             target={sponsor.href ? "_blank" : undefined}
             rel={sponsor.href ? "noopener noreferrer" : undefined}
@@ -75,7 +80,7 @@ const logoClasses = (sponsor: Sponsor) =>
             />
           </Wrapper>
           {/* always rendered so logos with and without a note stay on one baseline */}
-          <span class="min-h-4 font-mono text-[0.625rem] uppercase tracking-widest text-foreground/35">
+          <span class="min-h-4 font-mono text-[0.625rem] uppercase tracking-widest text-foreground/55">
             {sponsor.past && "Former supporter"}
           </span>
         </li>
@@ -88,7 +93,7 @@ const logoClasses = (sponsor: Sponsor) =>
           href={openSlotHref}
           class="group/slot flex h-[var(--tier-logo)] w-[calc(var(--tier-logo)*2.5)] items-center justify-center rounded-md border border-dashed border-brand/25 px-6 transition-colors duration-300 hover:border-brand/70"
         >
-          <span class="font-mono text-[0.625rem] uppercase tracking-widest text-foreground/35 transition-colors duration-300 group-hover/slot:text-brand-light text-center">
+          <span class="font-mono text-[0.625rem] uppercase tracking-widest text-foreground/55 transition-colors duration-300 group-hover/slot:text-brand-light text-center">
             Your logo here
           </span>
         </a>
