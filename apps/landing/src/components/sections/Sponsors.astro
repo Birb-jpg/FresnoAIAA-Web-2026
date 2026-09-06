@@ -1,0 +1,62 @@
+---
+import Section from '../ui/Section.astro';
+import SponsorTier from '../ui/SponsorTier.astro';
+import Button from '../ui/Button.astro';
+import { sponsorTiers } from '../../data/sponsors';
+
+interface Props {
+  /** Section number shown beside the title — "01" on its own page, later in a stack of sections. */
+  index?: string;
+  /** Render tiers that have no sponsors yet as an open "your logo here" slot. */
+  showOpenTiers?: boolean;
+}
+
+const { index = "01", showOpenTiers = true } = Astro.props;
+
+const CONTACT = 'mailto:aiaa.csufresno@gmail.com';
+
+// Top tier reads biggest and airiest, bottom tier smallest and tighter — values
+// are interpolated across however many tiers exist, so the ramp still looks
+// right whether there end up being two of them or six.
+const LOGO_REM = { top: 6.5, bottom: 3 };
+const GAP_REM = { top: 4, bottom: 2.5 };
+
+const tiers = sponsorTiers.filter(
+  (tier) => showOpenTiers || tier.sponsors.length > 0,
+);
+
+const ramp = (i: number, range: { top: number; bottom: number }) =>
+  tiers.length < 2
+    ? range.top
+    : range.top + (range.bottom - range.top) * (i / (tiers.length - 1));
+---
+
+<Section index={index} title="SPONSORS" subheading="The people who keep us flying." className="max-w-full" id="sponsors">
+  <section data-fadein="up" class="flex flex-col gap-14">
+    {tiers.map((tier, i) => (
+      <SponsorTier
+        name={tier.name}
+        blurb={tier.blurb}
+        sponsors={tier.sponsors}
+        logoHeight={tier.logoHeight ?? `${ramp(i, LOGO_REM)}rem`}
+        gap={`${ramp(i, GAP_REM)}rem`}
+        openSlotHref={CONTACT}
+      />
+    ))}
+  </section>
+
+  <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
+
+  <section data-fadein="up" class="flex flex-col items-center gap-3 text-center">
+    <p class="text-sm text-foreground/50 max-w-xl">
+      Every sponsor above put hardware, software, or funding behind a team of students.
+      Thank you! If your company wants a spot on this wall, we'd love to talk.
+    </p>
+    <section class="w-md h-auto flex flex-col mt-auto gap-2">
+      <Button href={CONTACT} variant="primary" external={true}>Become a Sponsor</Button>
+      <Button href={CONTACT} variant="secondary" external={true}>Sponsorship Packet</Button>
+    </section>
+      
+
+  </section>
+</Section>

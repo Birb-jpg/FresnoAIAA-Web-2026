@@ -3,7 +3,11 @@ import Section from '../ui/Section.astro';
 import Card from '../ui/Card.astro';
 import FSAIAA from '../../../public/aiaalogo.png';
 import Ansys from '../../../public/ANSYS_logo.png';
+import { Image } from 'astro:assets';
 
+
+
+import ScrollingBanner from '../ui/ScrollingBanner.astro';
 import Button from '../ui/Button.astro';
 ---
 
@@ -38,24 +42,15 @@ import Button from '../ui/Button.astro';
             <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
 
      <h4 class="text-3xl font-normal text-foreground">Sponsors keep us going.</h4>
-    <section data-fadein="left" class="flex flex-row gap-6 justify-center *:">
-        <!-- <Card className="grow" type="Simulations" title="Ansys" image={Ansys}/>
-        <Card type="Tier 1 Sponsor" title="AIAA" image={FSAIAA}/>
-        <Card type="Tier 1 Sponsor" title="AIAA" image={FSAIAA}/> -->
-        <section class="flex flex-row gap-6 justify-center *:max-w-1/5">
-          Image of sponser, horizontal card
-        </section>
-
-    </section>
-    <section data-fadein="left" class="flex flex-row gap-6 justify-center *:max-w-1/5">
-        <!-- <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
-        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
-        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
-        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/>
-        <Card type="Tier 2 Sponsor" title="AIAA" image={PH}/> -->
-    </section>
+    
+    <ScrollingBanner speed={35} gap="gap-16" itemHeight="6rem" dim label="Our sponsors" className="py-2" pauseOnHover={false}>
+      <Image src={FSAIAA} alt="AIAA Fresno State" />
+      <a href="https://www.ansys.com" target="_blank" rel="noopener noreferrer">
+        <Image src={Ansys} alt="Ansys" class="max-h-16 brightness-0 invert" />
+      </a>
+    </ScrollingBanner>
     <section data-fadein="left" class="grid grid-cols-1 md:grid-cols-5 gap-6">
-      <Card className="col-span-2" type="" title="To our Sponsors...">
+      <Card className="col-span-2" type="" title="To our Sponsors..." btnText="See All Sponsors" variant="outline" href="/sponsors">
         Thank you to all of our sponsors for supporting our team and helping us reach new heights. We couldn't do it without you!
     </Card>
       <Card className="col-span-3" type="" title="Sponsor Us" btnText="Sponsor Packet" variant="secondary" href="#">

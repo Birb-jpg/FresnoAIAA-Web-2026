@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import { twMerge } from "tailwind-merge";
+import type { Sponsor } from "../../data/sponsors";
+
+interface Props {
+  name: string;
+  blurb?: string;
+  /** Logo height for this row, any CSS length. */
+  logoHeight: string;
+  /** Space between logos, any CSS length. */
+  gap: string;
+  sponsors: Sponsor[];
+  /** Shown instead of logos when the tier has no sponsors yet. */
+  openSlotHref?: string;
+  className?: string;
+}
+
+const {
+  name,
+  blurb,
+  logoHeight,
+  gap,
+  sponsors,
+  openSlotHref,
+  className = "",
+} = Astro.props;
+
+// current supporters lead the row, former ones trail it
+const ordered = [...sponsors].sort(
+  (a, b) => Number(a.past ?? false) - Number(b.past ?? false),
+);
+
+const logoClasses = (sponsor: Sponsor) =>
+  twMerge(
+    "w-auto max-w-none object-contain transition duration-300 ease-out",
+    "opacity-60 grayscale group-hover/logo:opacity-100 group-hover/logo:grayscale-0",
+    sponsor.invert && "brightness-0 invert",
+  );
+---
+
+<section
+  class={twMerge("flex flex-col gap-6", className)}
+  style={`--tier-logo:${logoHeight};--tier-gap:${gap};`}
+>
+  <header class="flex items-baseline gap-4">
+    <h5 class="font-mono text-xs font-normal uppercase tracking-widest text-brand-light whitespace-nowrap">
+      {name}
+    </h5>
+    {blurb && (
+      <span class="font-mono text-xs tracking-tight text-foreground/40 whitespace-nowrap">
+        {blurb}
+      </span>
+    )}
+    <span aria-hidden="true" class="h-px flex-1 bg-gradient-to-r from-brand/40 to-transparent"></span>
+  </header>
+
+  <ul class="flex flex-wrap items-start justify-center gap-[var(--tier-gap)]">
+    {ordered.map((sponsor) => {
+      const Wrapper = sponsor.href ? "a" : "div";
+      return (
+        <li class="flex flex-col items-center gap-2">
+          <Wrapper
+            class="group/logo flex h-[var(--tier-logo)] items-center"
+            href={sponsor.href}
+            target={sponsor.href ? "_blank" : undefined}
+            rel={sponsor.href ? "noopener noreferrer" : undefined}
+          >
+            <Image
+              src={sponsor.logo}
+              alt={sponsor.name}
+              draggable={false}
+              class={logoClasses(sponsor)}
+              style={`height:calc(var(--tier-logo) * ${sponsor.scale ?? 1});`}
+            />
+          </Wrapper>
+          {/* always rendered so logos with and without a note stay on one baseline */}
+          <span class="min-h-4 font-mono text-[0.625rem] uppercase tracking-widest text-foreground/35">
+            {sponsor.past && "Former supporter"}
+          </span>
+        </li>
+      );
+    })}
+
+    {ordered.length === 0 && (
+      <li class="flex flex-col items-center gap-2">
+        <a
+          href={openSlotHref}
+          class="group/slot flex h-[var(--tier-logo)] w-[calc(var(--tier-logo)*2.5)] items-center justify-center rounded-md border border-dashed border-brand/25 px-6 transition-colors duration-300 hover:border-brand/70"
+        >
+          <span class="font-mono text-[0.625rem] uppercase tracking-widest text-foreground/35 transition-colors duration-300 group-hover/slot:text-brand-light text-center">
+            Your logo here
+          </span>
+        </a>
+        <span class="min-h-4"></span>
+      </li>
+    )}
+  </ul>
+</section>

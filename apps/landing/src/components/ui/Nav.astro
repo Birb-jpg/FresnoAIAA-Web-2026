@@ -2,11 +2,11 @@
 import Button from '../ui/Button.astro';
 
 const links = [
-    { href: '#projects', label: 'Projects' },
-    { href: '#fleet', label: 'Fleet' },
-    { href: '#about', label: 'About Us' },
-    { href: '#wiki', label: 'Wiki' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/#projects', label: 'Projects' },
+    { href: '/#fleet', label: 'Fleet' },
+    { href: '/#about', label: 'About Us' },
+    { href: '/#wiki', label: 'Wiki' },
+    { href: '/#contact', label: 'Contact' },
 ];
 ---
 
@@ -19,7 +19,7 @@ const links = [
             {links.map((l) => (
                 <li><Button href={l.href} variant="ghost" size="md">{l.label}</Button></li>
             ))}
-            <li><Button href="#sponsors" variant="outline" className="border-brand-light" size="md">Sponsors</Button></li>
+            <li><Button href="/sponsors" variant="outline" className="border-brand-light" size="md">Sponsors</Button></li>
         </ul>
 
         <!-- Mobile toggle -->

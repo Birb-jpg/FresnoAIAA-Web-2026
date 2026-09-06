@@ -1,0 +1,206 @@
+---
+import { twMerge } from "tailwind-merge";
+
+export interface Props {
+  /** Scroll speed in pixels per second. Independent of how many items you pass in. */
+  speed?: number;
+  /** Travel direction of the items. */
+  direction?: "left" | "right";
+  /** Tailwind gap utility used between items. */
+  gap?: string;
+  /** Freeze the marquee while the pointer is over it. */
+  pauseOnHover?: boolean;
+  /** Fade the left/right edges into the surrounding surface. */
+  fade?: boolean;
+  /** Width of each edge fade (any CSS length). */
+  fadeWidth?: string;
+  /** Colour the edges fade into — set this when the banner sits on a non-page background. */
+  fadeColor?: string;
+  /** Uniform render height for images in the banner (any CSS length). */
+  itemHeight?: string;
+  /** Constrain slotted <Image /> output to `itemHeight`. Disable for free-form cards. */
+  fitImages?: boolean;
+  /** Desaturated "sponsor wall" look that lights up on hover. */
+  dim?: boolean;
+  /** Accessible name for the marquee region. */
+  label?: string;
+  class?: string;
+  className?: string;
+}
+
+const {
+  speed = 60,
+  direction = "left",
+  gap = "gap-12",
+  pauseOnHover = true,
+  fade = true,
+  fadeWidth = "4rem",
+  fadeColor = "var(--color-background)",
+  itemHeight = "3rem",
+  fitImages = true,
+  dim = false,
+  label = "Scrolling banner",
+  class: klass = "",
+  className = "",
+} = Astro.props;
+
+const root = twMerge(
+  "group/banner relative isolate w-full overflow-hidden",
+  // manual scrolling stays available when the animation is switched off
+  "motion-reduce:overflow-x-auto motion-reduce:no-scrollbar",
+  klass,
+  className,
+);
+
+// Gradient overlays rather than a mask-image: a mask on the ancestor drops the
+// moving track off the compositor, which shows up as sub-pixel stepping at low speeds.
+const fadeEdge =
+  "pointer-events-none absolute inset-y-0 z-10 w-[var(--banner-fade)]";
+
+const trackClasses = twMerge(
+  "flex w-max items-center select-none",
+  "will-change-transform [backface-visibility:hidden]",
+  gap,
+  "animate-[fai-banner-scroll_var(--banner-duration,40s)_linear_infinite]",
+  direction === "right" && "[animation-direction:reverse]",
+  pauseOnHover && "group-hover/banner:[animation-play-state:paused]",
+  // paused while off-screen, and whenever the visitor asked for less motion
+  "data-[inview=false]:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]",
+);
+
+const groupClasses = twMerge(
+  "flex shrink-0 items-center [&>*]:shrink-0",
+  gap,
+  fitImages &&
+    "[&_img]:h-[var(--banner-item-height)] [&_img]:w-auto [&_img]:max-w-none [&_img]:object-contain",
+  dim &&
+    "[&_img]:opacity-60 [&_img]:grayscale [&_img]:transition [&_img]:duration-300 [&_img]:ease-out [&_img:hover]:opacity-100 [&_img:hover]:grayscale-0",
+);
+---
+
+<div
+  class={root}
+  role="marquee"
+  aria-label={label}
+  data-scrolling-banner
+  data-banner-speed={speed}
+  style={`--banner-fade:${fadeWidth};--banner-fade-color:${fadeColor};--banner-item-height:${itemHeight};`}
+>
+  {fade && (
+    <>
+      <span
+        aria-hidden="true"
+        class={twMerge(
+          fadeEdge,
+          "left-0 [background-image:linear-gradient(to_right,var(--banner-fade-color),transparent)]",
+        )}
+      />
+      <span
+        aria-hidden="true"
+        class={twMerge(
+          fadeEdge,
+          "right-0 [background-image:linear-gradient(to_left,var(--banner-fade-color),transparent)]",
+        )}
+      />
+    </>
+  )}
+
+  <div class={trackClasses} data-banner-track data-inview="true">
+    <div class={groupClasses} data-banner-group>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  @keyframes fai-banner-scroll {
+    /* calc()+var() keeps this a translate3d after minification, so the track
+       always gets its own compositor layer and moves with sub-pixel precision. */
+    from {
+      transform: translate3d(calc(0 * var(--banner-distance, 0px)), 0, 0);
+    }
+    to {
+      transform: translate3d(calc(-1 * var(--banner-distance, 0px)), 0, 0);
+    }
+  }
+</style>
+
+<script>
+  function setupBanner(root: HTMLElement) {
+    if (root.dataset.bannerReady) return;
+    const track = root.querySelector<HTMLElement>("[data-banner-track]");
+    const group = track?.querySelector<HTMLElement>("[data-banner-group]");
+    if (!track || !group) return;
+    root.dataset.bannerReady = "true";
+
+    const speed = Math.max(1, Number(root.dataset.bannerSpeed) || 60);
+
+    // a half-finished drag swallows the click that follows it
+    group
+      .querySelectorAll<HTMLImageElement>("img")
+      .forEach((img) => (img.draggable = false));
+
+    const buildClone = () => {
+      const clone = group.cloneNode(true) as HTMLElement;
+      clone.removeAttribute("data-banner-group");
+      clone.setAttribute("data-banner-clone", "");
+      // hidden from assistive tech and from the tab order, but still clickable:
+      // copies are what the visitor sees for most of the loop.
+      clone.setAttribute("aria-hidden", "true");
+      clone
+        .querySelectorAll<HTMLElement>(
+          'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        )
+        .forEach((el) => el.setAttribute("tabindex", "-1"));
+      return clone;
+    };
+
+    const measure = () => {
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      const distance = group.getBoundingClientRect().width + gap;
+      const viewport = root.getBoundingClientRect().width;
+      if (distance <= gap || !viewport) return;
+
+      // enough copies that the strip still covers the container at full offset
+      const copies = Math.max(1, Math.ceil(viewport / distance));
+      const existing = track.querySelectorAll("[data-banner-clone]");
+      const unchanged =
+        existing.length === copies &&
+        track.style.getPropertyValue("--banner-distance") === `${distance}px`;
+      // bail out instead of restarting the animation on a no-op resize
+      if (unchanged) return;
+
+      existing.forEach((clone) => clone.remove());
+      for (let i = 0; i < copies; i++) track.appendChild(buildClone());
+
+      track.style.setProperty("--banner-distance", `${distance}px`);
+      track.style.setProperty("--banner-duration", `${distance / speed}s`);
+    };
+
+    let frame = 0;
+    const remeasure = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    };
+
+    remeasure();
+    new ResizeObserver(remeasure).observe(group);
+    new ResizeObserver(remeasure).observe(root);
+    document.fonts?.ready.then(remeasure);
+
+    new IntersectionObserver(
+      ([entry]) => {
+        track.dataset.inview = String(entry.isIntersecting);
+      },
+      { rootMargin: "128px" },
+    ).observe(root);
+  }
+
+  const initBanners = () =>
+    document
+      .querySelectorAll<HTMLElement>("[data-scrolling-banner]")
+      .forEach(setupBanner);
+
+  initBanners();
+  document.addEventListener("astro:page-load", initBanners);
+</script>
