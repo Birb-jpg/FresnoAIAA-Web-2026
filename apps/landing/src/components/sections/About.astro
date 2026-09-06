@@ -10,17 +10,17 @@ const officerInfo = {
   "President": {
     name: 'Cyan Roberts',
     bio: 'el presidente',
-    imageFile: 'cyanr.png', // just the filename in the officers folder
+    imageFile: 'cyanr0.jpg', // just the filename in the officers folder
   },
   "Vice President": {
     name: 'Angelica Sanchez',
     bio: 'el vice presidente',
-    imageFile: 'FAR0.webp',
+    imageFile: 'angelicas0.jpg',
   },
   "Treasurer": {
     name: 'Daniel Gooboian',
     bio: 'goob goob',
-    imageFile: 'danielg.png',
+    imageFile: 'danielg0.jpg',
   },
   "Secretary": {
     name: 'Isaac Lay',
@@ -30,13 +30,13 @@ const officerInfo = {
   "Launch Coordinator": {
     name: 'Ethan Jarocki',
     bio: 'L3 rocket nerd',
-    imageFile: 'ethanj.jpg',
+    imageFile: 'ethanj0.jpg',
   },
-  // "Event Coordinator": {
-  //   name: 'John Smith',
-  //   bio: 'Woosh x5',
-  //   imageFile: 'FAR0.webp',
-  // },
+  "Propulsion Lead": {
+    name: 'Levon Melkonian',
+    bio: 'Woosh x5',
+    imageFile: 'levonm0.jpg',
+  },
   // "K-12 Coordinator": {
   //   name: 'John Smith',
   //   bio: 'Woosh x6',
@@ -84,7 +84,7 @@ function getImage(filename: string) {
 
     <section data-fadein="up" class="flex flex-col gap-4">
     <div class="h-px w-full bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
-      <h4 class="text-3xl font-normal text-foreground">Our Officers.</h4>
+      <h4 class="text-3xl font-normal text-foreground">Our Officers and Leads.</h4>
     <section data-fadein="up" class="grid grid-cols-1 md:grid-cols-3 gap-4">
     {Object.entries(officerInfo).map(([position, info]) => (
       <OfficerCard ticks={false} type={position} title={info.name} image={getImage(info.imageFile)}>
