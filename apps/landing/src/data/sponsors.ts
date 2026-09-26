@@ -40,48 +40,46 @@ export interface SponsorTier {
  */
 export const sponsorTiers: SponsorTier[] = [
   {
-    name: "Tier 5",
-    blurb: "(>=$10k) Flagship partners",
-    sponsors: [
-      {
-        name: "Ansys",
-        logo: Ansys,
-        href: "https://www.ansys.com",
-        invert: true,
-        scale: .9,
-      },
-      {
+    name: "Platinum",
+    blurb: "($10k+) Flagship partners",
+    sponsors: [],
+  },
+  {
+    name: "Gold",
+    blurb: "($7.0k+) Flagship partners",
+    sponsors: [],
+  },
+  {
+    name: "Silver",
+    blurb: "($5.0k+)  Program supporters",
+    sponsors: [],
+  },
+  {
+    name: "Bronze",
+    blurb: "($2.5k+) Program supporters",
+    sponsors: [],
+  },
+  {
+    name: "Copper",
+    blurb: "($1.0k+) Program supporters",
+    sponsors: [{
         name: "LabJack",
         logo: LabJack,
         href: "https://www.labjack.com",
         invert: true,
-        scale: .9,
+        scale: .65,
+      }],
+  },
+  {
+    name: "Friends",
+    blurb: "($1-999) Launch day friends",
+    sponsors: [{
+        name: "Ansys",
+        logo: Ansys,
+        href: "https://www.ansys.com",
+        invert: true,
+        scale: .5,
       }
     ],
-  },
-  {
-    name: "Tier 4",
-    blurb: "(>=$7.0k) Flagship partners",
-    sponsors: [],
-  },
-  {
-    name: "Tier 3",
-    blurb: "(>=$5.0k)  Program supporters",
-    sponsors: [],
-  },
-  {
-    name: "Tier 2",
-    blurb: "(>=$2.5k) Program supporters",
-    sponsors: [],
-  },
-  {
-    name: "Tier 1",
-    blurb: "(>=$1.0k) Program supporters",
-    sponsors: [],
-  },
-  {
-    name: "Tier 0",
-    blurb: "(<=$999) Launch day friends",
-    sponsors: [],
   }
 ];
