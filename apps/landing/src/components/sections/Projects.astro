@@ -4,7 +4,7 @@ import Card from '../ui/Card.astro';
 import FSAIAA from '../../../public/aiaalogo.png';
 import Ansys from '../../../public/ANSYS_logo.png';
 import { Image } from 'astro:assets';
-
+import LabJack from '../../../public/labjack.webp';
 
 
 import ScrollingBanner from '../ui/ScrollingBanner.astro';
@@ -43,10 +43,13 @@ import Button from '../ui/Button.astro';
 
      <h3 class="text-3xl font-normal text-foreground">Sponsors keep us going.</h3>
     
-    <ScrollingBanner speed={35} gap="gap-16" itemHeight="6rem" dim label="Our sponsors" className="py-2" pauseOnHover={false}>
+    <ScrollingBanner speed={45} gap="gap-16" itemHeight="8rem" dim label="Our sponsors" className="py-2" pauseOnHover={false}>
       <Image src={FSAIAA} alt="AIAA Fresno State" />
       <a href="https://www.ansys.com" target="_blank" rel="noopener noreferrer">
         <Image src={Ansys} alt="Ansys" class="max-h-16 brightness-0 invert" />
+      </a>
+      <a href="https://www.labjack.com" target="_blank" rel="noopener noreferrer">
+        <Image src={LabJack} alt="LabJack" class="max-h-16 brightness-0 invert" />
       </a>
     </ScrollingBanner>
     <section data-fadein="left" class="grid grid-cols-1 md:grid-cols-5 gap-6">
