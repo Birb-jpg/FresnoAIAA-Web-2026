@@ -67,7 +67,7 @@ export const sponsorTiers: SponsorTier[] = [
         logo: LabJack,
         href: "https://www.labjack.com",
         invert: true,
-        scale: .65,
+        scale: .75,
       }],
   },
   {
@@ -78,7 +78,7 @@ export const sponsorTiers: SponsorTier[] = [
         logo: Ansys,
         href: "https://www.ansys.com",
         invert: true,
-        scale: .5,
+        scale: .65,
       }
     ],
   }
