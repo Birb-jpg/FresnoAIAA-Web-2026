@@ -40,27 +40,27 @@ export interface SponsorTier {
  */
 export const sponsorTiers: SponsorTier[] = [
   {
-    name: "Platinum",
+    name: "Platinum", // Scale 1
     blurb: "($10k+) Flagship partners",
     sponsors: [],
   },
   {
-    name: "Gold",
+    name: "Gold", // Scale .9
     blurb: "($7.0k+) Flagship partners",
     sponsors: [],
   },
   {
-    name: "Silver",
+    name: "Silver", // Scale .85
     blurb: "($5.0k+)  Program supporters",
     sponsors: [],
   },
   {
-    name: "Bronze",
+    name: "Bronze", // Scale .8
     blurb: "($2.5k+) Program supporters",
     sponsors: [],
   },
   {
-    name: "Copper",
+    name: "Copper", // Scale .75
     blurb: "($1.0k+) Program supporters",
     sponsors: [{
         name: "LabJack",
@@ -71,7 +71,7 @@ export const sponsorTiers: SponsorTier[] = [
       }],
   },
   {
-    name: "Friends",
+    name: "Friends", // Scale .65
     blurb: "($1-999) Launch day friends",
     sponsors: [{
         name: "Ansys",
